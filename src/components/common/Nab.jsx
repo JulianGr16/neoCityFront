@@ -5,11 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 const Nab = () => {
   return (
     <>
-    <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="py-4 barra-navegacion">
-        <Navbar.Brand href="#home" className="fs-1 ms-5">NeoCity</Navbar.Brand>
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="py-2 barra-navegacion">
+        <Navbar.Brand href="#home" className="fs-3 ms-5">NeoCity</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
-          <Nav className="fs-3">
+          <Nav className="">
             <Nav.Link href="#home"></Nav.Link>
             <Nav.Link href="#link">¿Quiénes somos?</Nav.Link>
             <Nav.Link href="#link">Contacto</Nav.Link>
