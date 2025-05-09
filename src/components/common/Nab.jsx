@@ -1,6 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Contacto from "../pages/Contacto";
+
+
 
 const Nab = () => {
   return (
@@ -10,11 +14,11 @@ const Nab = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="">
-            <Nav.Link href="#home"></Nav.Link>
-            <Nav.Link href="#link">¿Quiénes somos?</Nav.Link>
-            <Nav.Link href="#link">Contacto</Nav.Link>
-            <Nav.Link href="#link">Galeria de imágenes</Nav.Link>
-            <Nav.Link href="#link">Catálogo de Habitaciones</Nav.Link>
+            <Nav.Link as={NavLink} to="#"></Nav.Link>
+            <Nav.Link as={NavLink} to="#">¿Quiénes somos?</Nav.Link>
+            <Nav.Link as={NavLink} to="/Contacto">Contacto</Nav.Link>
+            <Nav.Link as={NavLink} to="#">Galeria de imágenes</Nav.Link>
+            <Nav.Link as={NavLink} to="#">Catálogo de Habitaciones</Nav.Link>
           </Nav>
         </Navbar.Collapse>
     </Navbar>
