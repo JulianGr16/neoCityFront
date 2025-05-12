@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, FormControl, Button } from "react-bootstrap";
 const Contacto = () => {
   return (
     <Container className="text-center px-5 py-5">
@@ -7,19 +7,19 @@ const Contacto = () => {
         <Col className="text-start">
           <h1 className="text-primary-emphasis">Contactanos</h1>
           <h5>
-            <i class="bi bi-geo-alt"></i> Direccion:
+            <i className="bi bi-geo-alt"></i> Direccion:
           </h5>
           <p>Av. Cordoba 235, Tucuman, Argentina</p>
           <h5>
-            <i class="bi bi-envelope"></i> Email:
+            <i className="bi bi-envelope"></i> Email:
           </h5>
           <p>Neocityhotel@gmail.com</p>
           <h5>
-            <i class="bi bi-telephone"></i> Telefono:
+            <i className="bi bi-telephone"></i> Telefono:
           </h5>
           <p>+54 9 381 2398701</p>
           <h5>
-            <i class="bi bi-clock"></i> Horarios de atencion:
+            <i className="bi bi-clock"></i> Horarios de atencion:
           </h5>
           <p>
             Recepcion: 24 horas, todos los dias<br></br>Consultas por telefono y
@@ -30,15 +30,28 @@ const Contacto = () => {
           <Form>
             <Form.Group className="my-3">
               <Col className="d-flex my-2">
-                <Form.Control type="text" placeholder="Nombre"/>
-                <Form.Control type="text" placeholder="Apellido" className="ms-2" />
+                <Form.Control type="text" placeholder="Nombre" />
+                <Form.Control
+                  type="text"
+                  placeholder="Apellido"
+                  className="ms-2"
+                />
               </Col>
-              <Form.Control type="email" placeholder="Correo Electrónico" className="my-1"/>
-              <Form.Control type="text" placeholder="Asunto" className="my-1"/>
+              <Form.Control
+                type="email"
+                placeholder="Correo Electrónico"
+                className="my-1"
+              />
+              <Form.Control type="text" placeholder="Asunto" className="my-1" />
               <Col>
-                <Form.Control as={"textarea"} placeholder="Mensaje" className="my-1 alturaTextarea" />
+                <Form.Control
+                  as={"textarea"}
+                  placeholder="Mensaje"
+                  className="my-1 alturaTextarea"
+                />
               </Col>
             </Form.Group>
+            <Button variant="primary" type="submit">Enviar</Button>
           </Form>
         </Col>
       </Row>
