@@ -1,6 +1,7 @@
-import React from "react";
+import { Button } from "react-bootstrap";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import '../../App.css'
 
 const Nab = () => {
   return (
@@ -15,6 +16,7 @@ const Nab = () => {
             <Nav.Link href="#link">Contacto</Nav.Link>
             <Nav.Link href="#link">Galeria de imágenes</Nav.Link>
             <Nav.Link href="#link">Catálogo de Habitaciones</Nav.Link>
+            <Button variant="light">Iniciar Sesion</Button>
           </Nav>
         </Navbar.Collapse>
     </Navbar>
