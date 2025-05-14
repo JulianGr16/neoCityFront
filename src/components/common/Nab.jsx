@@ -15,7 +15,7 @@ const Nab = () => {
         <Navbar.Collapse>
           <Nav className="">
             <Nav.Link as={NavLink} to="#"></Nav.Link>
-            <Nav.Link as={NavLink} to="#">¿Quiénes somos?</Nav.Link>
+            <Nav.Link as={NavLink} to="/QuienesSomos">¿Quiénes somos?</Nav.Link>
             <Nav.Link as={NavLink} to="/Contacto">Contacto</Nav.Link>
             <Nav.Link as={NavLink} to="#">Galeria de imágenes</Nav.Link>
             <Nav.Link as={NavLink} to="#">Catálogo de Habitaciones</Nav.Link>
