@@ -3,6 +3,7 @@ import Nab from "./components/common/Nab";
 import Foot from "./components/common/Foot";
 import Index from "./components/pages/Index";
 import '../src/App.css';
+import GaleriaDeImagenes from "./components/pages/GaleriaDeImagenes";
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
     <Nab></Nab>
-    <Index></Index>
+    <GaleriaDeImagenes></GaleriaDeImagenes>
+    {/* <Index></Index> */}
     <Foot></Foot>
     </>
   )
