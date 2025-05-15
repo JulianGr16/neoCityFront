@@ -1,3 +1,37 @@
-.lista-preguntas{
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.barra-navegacion {
+  position: static;
+}
+
+.lista-preguntas {
   list-style: none;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainSection {
+  flex-grow: 1;
+  background-image: url(./assets/banner-main.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 3%;
+}
+
+.section-card {
+  background-image: url(./assets/banner-sec-card.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 5%;
+}
+
+.section-comentarios {
+  background-image: url(./assets/banner-comentarios.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 2%;
 }
