@@ -1,25 +1,37 @@
+import { Link, NavLink } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 import { Button } from "react-bootstrap";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import '../../App.css'
+import Navbar from "react-bootstrap/Navbar";
+import "../../App.css";
 
 const Nab = () => {
   return (
     <>
-    <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="py-2 barra-navegacion">
-        <Navbar.Brand href="#home" className="fs-3 ms-5">NeoCity</Navbar.Brand>
+      <Navbar
+        expand="lg"
+        bg="dark"
+        data-bs-theme="dark"
+        className="py-2 barra-navegacion"
+      >
+        <Navbar.Brand as={Link} to='/' className="fs-3 ms-5">
+          <i class="bi bi-buildings"></i>NeoCity
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="">
-            <Nav.Link href="#home"></Nav.Link>
-            <Nav.Link href="#link">¿Quiénes somos?</Nav.Link>
-            <Nav.Link href="#link">Contacto</Nav.Link>
-            <Nav.Link href="#link">Galeria de imágenes</Nav.Link>
-            <Nav.Link href="#link">Catálogo de Habitaciones</Nav.Link>
+            <NavLink end to='/' className='nav-link'>Inicio</NavLink>
+            <NavLink end to="/QuienesSomos" className='nav-link'>
+              ¿Quiénes somos?
+            </NavLink>
+            <NavLink end to="/Contacto" className='nav-link'>
+              Contacto
+            </NavLink>
+            <NavLink end to='galeriaDeImagenes' className='nav-link'>Galeria de imágenes</NavLink>
+            <Nav.Link>Catálogo de Habitaciones</Nav.Link>
             <Button variant="light">Iniciar Sesion</Button>
           </Nav>
         </Navbar.Collapse>
-    </Navbar>
+      </Navbar>
     </>
   );
 };
