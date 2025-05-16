@@ -7,6 +7,7 @@ import Index from "./components/pages/Index";
 import '../src/App.css';
 import GaleriaDeImagenes from "./components/pages/GaleriaDeImagenes";
 import Contacto from "./components/pages/Contacto";
+import Error from "./components/pages/Error";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <Route path="/quienesSomos" element={<QuienesSomos></QuienesSomos>}></Route>
       <Route path="/contacto" element={<Contacto></Contacto>}></Route>
       <Route path="/galeriaDeImagenes" element={<GaleriaDeImagenes></GaleriaDeImagenes>}></Route>
-      <Route path="*" element></Route>
+      <Route path="*" element={<Error></Error>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>

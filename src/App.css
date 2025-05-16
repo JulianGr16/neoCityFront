@@ -35,3 +35,7 @@
   background-size: cover;
   background-position: 2%;
 }
+
+.errorSection{
+  flex-grow: 1;
+}

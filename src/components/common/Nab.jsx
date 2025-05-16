@@ -28,7 +28,9 @@ const Nab = () => {
             </NavLink>
             <NavLink end to='galeriaDeImagenes' className='nav-link'>Galeria de imágenes</NavLink>
             <Nav.Link>Catálogo de Habitaciones</Nav.Link>
-            <Button variant="light">Iniciar Sesion</Button>
+            <Button variant="light">
+              <i class="bi bi-person me-1"></i>
+              Iniciar Sesion</Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
