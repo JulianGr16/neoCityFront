@@ -8,6 +8,7 @@ import '../src/App.css';
 import GaleriaDeImagenes from "./components/pages/GaleriaDeImagenes";
 import Contacto from "./components/pages/Contacto";
 import Error from "./components/pages/Error";
+import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/contacto" element={<Contacto></Contacto>}></Route>
       <Route path="/galeriaDeImagenes" element={<GaleriaDeImagenes></GaleriaDeImagenes>}></Route>
       <Route path="*" element={<Error></Error>}></Route>
+      <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>

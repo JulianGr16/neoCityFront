@@ -36,31 +36,31 @@ const Index = () => {
         <div className="row d-flex justify-content-around">
           <div className="col-sm-12 col-md-4 my-2 ">
              <div className="border bg-white text-black rounded py-2">
-              <i class="bi bi-person fw-bold ">CARLOS PEREZ:</i>
+              <i className="bi bi-person fw-bold ">CARLOS PEREZ:</i>
             Excelente servicio!!
              </div>
           </div>
           <div className="col-sm-12 col-md-4 my-2 ">
             <div className="border bg-white text-black rounded py-2">
-               <i class="bi bi-person fw-bold">MARINA SALAS:</i>
+               <i className="bi bi-person fw-bold">MARINA SALAS:</i>
             la verdad que muy recomendable!
             </div>
           </div>
           <div className="col-sm-12 col-md-4 my-2">
              <div className="border bg-white text-black rounded">
-              <i class="bi bi-person fw-bold">HECTOR VAQUERO:</i>
+              <i className="bi bi-person fw-bold">HECTOR VAQUERO:</i>
             Me lo recomendo un colega del trabajo... 10 puntos!!
              </div>
           </div>
           <div className="col-sm-12 col-md-4 my-2 ">
              <div className="border bg-white text-black rounded py-2">
-              <i class="bi bi-person fw-bold">MARIO RODRIGUEZ:</i>
+              <i className="bi bi-person fw-bold">MARIO RODRIGUEZ:</i>
             mi familia ya quiere volver al hotel!!
              </div>
           </div>
           <div className="col-sm-12 col-md-4 my-2 ">
              <div className="border bg-white text-black rounded">
-              <i class="bi bi-person fw-bold">PEDRO CAMPOS:</i>y lo mejor de todo
+              <i className="bi bi-person fw-bold">PEDRO CAMPOS:</i>y lo mejor de todo
             son sus promociones en fechas importante
              </div>
           </div>
