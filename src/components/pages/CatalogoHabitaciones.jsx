@@ -1,4 +1,5 @@
 import React from "react";
+import "../../App.css";
 import {Row, Col, Card, Button } from "react-bootstrap";
 import Suite from "../../assets/banner-habitaciones/habitacion-suite.jpg";
 import Premium from "../../assets/banner-habitaciones/habitacion-premium.jpg";
@@ -7,7 +8,7 @@ import Presidencial from "../../assets/banner-habitaciones/habitacion-presidenci
 const CatalogoHabitaciones = () => {
   return (
     <>
-      <section className="container-fluid section-card py-4">
+      <section className="container-fluid section-card py-4 flex-grow-1">
         <article className="container-fluid w-75 ">
           <h2 className="text-center text-white fw-bolder my-3 border rounded border-black bg-dark opacity-75 py-3">
             HABITACIONES
