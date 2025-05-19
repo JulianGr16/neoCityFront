@@ -27,7 +27,7 @@ const Nab = () => {
               Contacto
             </NavLink>
             <NavLink end to='galeriaDeImagenes' className='nav-link'>Galeria de imágenes</NavLink>
-            <Nav.Link>Catálogo de Habitaciones</Nav.Link>
+            <NavLink end to="/CatalogoHabitaciones" className="nav-link">Catálogo de Habitaciones</NavLink>
             <Button variant="light">
               <i class="bi bi-person me-1"></i>
               Iniciar Sesion</Button>
