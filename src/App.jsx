@@ -9,6 +9,8 @@ import GaleriaDeImagenes from "./components/pages/GaleriaDeImagenes";
 import Contacto from "./components/pages/Contacto";
 import Error from "./components/pages/Error";
 import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones"
+import Administrador from "./components/pages/Administrador";
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
       <Route path="/galeriaDeImagenes" element={<GaleriaDeImagenes></GaleriaDeImagenes>}></Route>
       <Route path="*" element={<Error></Error>}></Route>
       <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
+      <Route path="/administrador" element={<Administrador></Administrador>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>
