@@ -39,3 +39,7 @@
 .errorSection{
   flex-grow: 1;
 }
+
+.mainAdmin{
+  flex-grow: 1;
+}
