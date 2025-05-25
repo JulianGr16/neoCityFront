@@ -14,10 +14,12 @@ const FormularioHabitacion = () => {
   };
 
   return (
-    <section className="container ">
+    <section className="container mt-3">
       <h1>Nueva Habitacion</h1>
       <hr />
-      <Form className="my-4" onSubmit={handleSubmit(productoValidado)}>
+      <article className="row">
+        <div className="col-sm-12 col-md-12">
+          <Form className="my-3">
         <Form.Group className="mb-3" controlId="formHabitacion">
           <Form.Label>Numero de Habitacion*</Form.Label>
           <Form.Control
@@ -139,6 +141,8 @@ const FormularioHabitacion = () => {
           Guardar
         </Button>
       </Form>
+        </div>
+      </article>
     </section>
   );
 };

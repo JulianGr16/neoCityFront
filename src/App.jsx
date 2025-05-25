@@ -10,6 +10,7 @@ import Contacto from "./components/pages/Contacto";
 import Error from "./components/pages/Error";
 import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones"
 import Administrador from "./components/pages/Administrador";
+import FormHabitacion from "./components/pages/habitacion/FormHabitacion"
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="*" element={<Error></Error>}></Route>
       <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
       <Route path="/administrador" element={<Administrador></Administrador>}></Route>
+      <Route path="/administrador/crear" element={<FormHabitacion></FormHabitacion>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>
