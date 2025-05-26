@@ -8,6 +8,7 @@ import {
   FormText,
   FormSelect,
 } from "react-bootstrap";
+import { crearHabitacion } from "../../../helpers/queries.js";
 
 const FormularioHabitacion = () => {
   const {
@@ -17,8 +18,11 @@ const FormularioHabitacion = () => {
     reset,
   } = useForm();
 
-  const habitacionValidada = (habitacion) => {
+  const habitacionValidada = async(habitacion) => {
     console.log(habitacion);
+    //le pedimos a la api crear una habitacion
+    const respuesta = await crearHabitacion(habitacion)
+    console.log(respuesta)
   };
 
   return (
