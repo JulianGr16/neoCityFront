@@ -1,3 +1,18 @@
-const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
+export const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 
-export default URLHabitaciones
+//solicitud POST a la api
+export const crearHabitacion = async(habitacionNueva)=>{
+    try {
+        const respuesta = await fetch(URLHabitaciones,{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(habitacionNueva)
+        })
+    } catch (error) {
+        console.error(error)
+        return false;
+    }
+}
+

@@ -1,0 +1,20 @@
+{
+  "habitaciones": [
+    {
+      "numero": "05",
+      "tipo": "Suite Junior",
+      "capacidad": "2",
+      "precioPorNoche": "$18000",
+      "imagen": "https://www.pexels.com/es-es/foto/colcha-de-cama-y-almohada-negra-y-gris-164595/",
+      "id": 1
+    },
+    {
+      "numero": "12",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "14000",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 2
+    }
+  ]
+}
