@@ -16,12 +16,11 @@ const Administrador = () => {
       <hr />
       <article className="row">
         <div className="col-sm-12 col-md-12 my-3">
-          <h2>Habitaciones <Link to="/administrador/crear"><i class="bi bi-file-earmark-plus"></i></Link></h2> 
+          <h2>Habitaciones <Link to="/administrador/crear"><i class="bi bi-file-earmark-plus btn btn-primary"></i></Link></h2> 
         </div>
         <hr />
         <div className="col-sm-12 col-md-12 ">
-          <h2>Usuarios</h2>
-          <Button>Nueva Usuario</Button>
+          <h2>Usuarios<i class="bi bi-file-earmark-plus btn btn-primary ms-2"></i></h2>
         </div>
       </article>
     </section>
