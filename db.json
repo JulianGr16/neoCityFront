@@ -1,19 +1,100 @@
 {
-  "posts": [
+  "habitaciones": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "numero": "05",
+      "tipo": "Suite Junior",
+      "capacidad": "2",
+      "precioPorNoche": "$18000",
+      "imagen": "https://www.pexels.com/es-es/foto/colcha-de-cama-y-almohada-negra-y-gris-164595/",
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "numero": "12",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "14000",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 2
+    },
+    {
+      "numero": "23",
+      "tipo": "Suite Premium",
+      "capacidad": "4",
+      "precioPorNoche": "25000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 3
+    },
+    {
+      "numero": "26",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "17000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 4
+    },
+    {
+      "numero": "26",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "17000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 5
+    },
+    {
+      "numero": "29",
+      "tipo": "Suite Junior",
+      "capacidad": "3",
+      "precioPorNoche": "23000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 6
+    },
+    {
+      "numero": "13",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "15000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 7
+    },
+    {
+      "numero": "13",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "15000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 8
+    },
+    {
+      "numero": "12",
+      "tipo": "Suite Junior",
+      "capacidad": "2",
+      "precioPorNoche": "17000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 9
+    },
+    {
+      "numero": "28",
+      "tipo": "Suite Premium",
+      "capacidad": "4",
+      "precioPorNoche": "27000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 10
+    },
+    {
+      "numero": "15",
+      "tipo": "Suite Premium",
+      "capacidad": "2",
+      "precioPorNoche": "25000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 11
+    },
+    {
+      "numero": "23",
+      "tipo": "Suite Standard",
+      "capacidad": "2",
+      "precioPorNoche": "23000",
+      "imagen": "https://www.pexels.com/es-es/foto/hotel-cama-habitacion-casa-6585768/",
+      "id": 12
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
