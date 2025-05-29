@@ -1,14 +1,35 @@
 import { Button, Table } from "react-bootstrap";
 import "../../App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { URLHabitaciones } from "../../helpers/queries";
 import { Link } from "react-router-dom";
+import { leerHabitacion } from "../../helpers/queries";
 import ItemHabitacion from "./habitacion/ItemHabitacion";
-
+import Swal from "sweetalert2";
 
 
 const Administrador = () => {
- NavbarIndexFooter
+
+  const [habitaciones, setHabitaciones] = useState([]);
+
+  useEffect(()=>{
+    obtenerHabitaciones()
+  },[])
+
+  const  obtenerHabitaciones = async() => {
+    const respuesta = await leerHabitacion()
+    if(respuesta.status === 200){
+      const datos = await respuesta.json()
+      setHabitaciones(datos)
+    }else{
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `No se pudieron obtener la lista de habitaciones, intente nuevamente mas tarde.`,
+        icon: "error",
+      })
+    }
+  }
+
   return (
     <section className="container mainAdmin py-3">
       <h1 className="text-center">Administrador</h1>
@@ -30,7 +51,7 @@ const Administrador = () => {
           </thead>
           <tbody>
             {
-              <ItemHabitacion></ItemHabitacion>
+              habitaciones.map((habitacion, posicion) => <ItemHabitacion key={habitacion.id} habitacion={habitacion} fila={posicion+1}></ItemHabitacion>)
             }
           </tbody>
         </Table>
