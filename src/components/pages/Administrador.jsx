@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { URLHabitaciones } from "../../helpers/queries";
 import { Link } from "react-router-dom";
 
-const Administrador = () => {
+const Administrador = () => {la
   useEffect(()=>{
     console.log(URLHabitaciones)
   },[])
