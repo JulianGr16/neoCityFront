@@ -1,20 +1,45 @@
 import { useForm } from "react-hook-form";
-import { Form, Button, FormGroup } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  FormGroup,
+  FormLabel,
+  FormControl,
+  FormText,
+  FormSelect,
+} from "react-bootstrap";
+import { crearHabitacion } from "../../../helpers/queries.js";
+import Swal from "sweetalert2";
 
 const FormularioHabitacion = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const HabitacionValida = (habitacion) => {
-    console.log(habitacion);
+  const habitacionValidada = async (habitacion) => {
+    //le pedimos a la api crear una habitacion
+    const respuesta = await crearHabitacion(habitacion);
+    if (respuesta.status === 201) {
+      Swal.fire({
+        title: "Habitacion creada",
+        text: `La habitacion ${habitacion.numero} fue creada correctamente!`,
+        icon: "success",
+      });
+      reset();
+    } else {
+       Swal.fire({
+        title: "Ocurrio un error",
+        text: `La habitacion ${habitacion.numero} no pudo crearse, intente nuevamente más tarde.`,
+        icon: "error",
+      });
+    }
   };
 
   return (
-    <section className="container ">
+    <section className="container mt-3">
       <h1>Nueva Habitacion</h1>
       <hr />
       <Form className="my-4" onSubmit={handleSubmit(productoValidado)}>
