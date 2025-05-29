@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { crearHabitacion } from "../../../helpers/queries.js";
 
-const FormularioHabitacion = () => {
+const FormularioHabitacion = (titulo, reservandoHabitacion) => {
   const {
     register,
     handleSubmit,
@@ -19,15 +19,21 @@ const FormularioHabitacion = () => {
   } = useForm();
 
   const habitacionValidada = async(habitacion) => {
+    if (reservandoHabitacion){
+      const respuesta = await crearHabitacion(habitacion)
+      console.log(respuesta)
+    }else{
+      console.log('aqui tengo que editar la habitacion')
+    }
+
     console.log(habitacion);
     //le pedimos a la api crear una habitacion
-    const respuesta = await crearHabitacion(habitacion)
-    console.log(respuesta)
+    
   };
 
   return (
     <section className="container mt-3">
-      <h1>Nueva Habitacion</h1>
+      <h1>{titulo}</h1>
       <hr />
       <article className="row">
         <div className="col-sm-12 col-md-12">

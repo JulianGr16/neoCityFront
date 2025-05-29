@@ -27,6 +27,7 @@ function App() {
       <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
       <Route path="/administrador" element={<Administrador></Administrador>}></Route>
       <Route path="/administrador/crear" element={<FormHabitacion></FormHabitacion>}></Route>
+      <Route path="/administrador/editar" element={<FormHabitacion titulo={'Editar Habitacion'} reservandoHabitacion={flase}></FormHabitacion>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>
