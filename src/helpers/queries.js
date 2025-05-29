@@ -16,3 +16,14 @@ export const crearHabitacion = async (habitacionNueva) => {
     return false;
   }
 };
+
+// //GET
+// export const leerHabitacion = async()=>{
+//   try {
+//     const respuesta = await fetch(URLHabitaciones);
+//     return respuesta;
+//   } catch (error) {
+//      console.error(error);
+//     return false;
+//   }
+// }

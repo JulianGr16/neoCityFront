@@ -5,7 +5,6 @@ import { URLHabitaciones } from "../../helpers/queries";
 import { Link } from "react-router-dom";
 
 const Administrador = () => {
-
   useEffect(()=>{
     console.log(URLHabitaciones)
   },[])
