@@ -171,7 +171,7 @@ const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
               required: "La imagen es un dato obligatorio",
               pattern: {
                 value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
-                message: "el formato debe ser (JPEG|JPG|GIF|PNG",
+                message: "el formato debe ser (JPEG|JPG|GIF|PNG)",
               },
             })}
           />

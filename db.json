@@ -1,20 +1,5 @@
 {
   "habitaciones": [
-    {
-      "tipo": "Suite Premium",
-      "capacidad": "4",
-      "precioPorNoche": "10000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://i.pinimg.com/736x/62/f3/e4/62f3e485f8883b7f4f1dd576adddb6f2.jpg",
-      "id": 2
-    },
-    {
-      "tipo": "Suite Premium",
-      "capacidad": "2",
-      "precioPorNoche": "14000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/12/19/1516/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.jpg/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.16x9.jpg",
-      "id": 3
-    }
+    
   ]
 }
