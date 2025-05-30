@@ -1,12 +1,69 @@
 {
   "habitaciones": [
     {
-      "numero": "05",
       "tipo": "Suite Junior",
-      "capacidad": "2",
-      "precioPorNoche": "$18000",
-      "imagen": "https://www.pexels.com/es-es/foto/colcha-de-cama-y-almohada-negra-y-gris-164595/",
+      "capacidad": "3",
+      "precioPorNoche": "18000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://wallpapers.com/images/featured/fondods-de-habitacion-de-hotel-qad26bgd35ll4qv6.jpg",
+      "numero": "05",
       "id": 1
+    },
+    {
+      "tipo": "Suite Premium",
+      "capacidad": "4",
+      "precioPorNoche": "10000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://i.pinimg.com/736x/62/f3/e4/62f3e485f8883b7f4f1dd576adddb6f2.jpg",
+      "id": 2
+    },
+    {
+      "tipo": "Suite Junior",
+      "capacidad": "4",
+      "precioPorNoche": "5000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 3
+    },
+    {
+      "tipo": "Suite Junior",
+      "capacidad": "4",
+      "precioPorNoche": "10000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 4
+    },
+    {
+      "tipo": "Suite Junior",
+      "capacidad": "4",
+      "precioPorNoche": "12000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 5
+    },
+    {
+      "tipo": "Suite Standard",
+      "capacidad": "4",
+      "precioPorNoche": "14000",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 6
+    },
+    {
+      "tipo": "Suite Junior",
+      "capacidad": "4",
+      "precioPorNoche": "12333",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 7
+    },
+    {
+      "tipo": "Suite Premium",
+      "capacidad": "1",
+      "precioPorNoche": "9999",
+      "fecha": "22/12/2025 a 25/12/2025",
+      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
+      "id": 8
     }
   ]
 }
