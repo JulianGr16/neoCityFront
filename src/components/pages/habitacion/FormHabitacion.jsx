@@ -8,62 +8,87 @@ import {
   FormText,
   FormSelect,
 } from "react-bootstrap";
-import { crearHabitacion } from "../../../helpers/queries.js";
+import { crearHabitacion, editarHabitacion, leerHabitacion, obtenerHabitacion } from "../../../helpers/queries.js";
 import Swal from "sweetalert2";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const FormularioHabitacion = () => {
+const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setValue
   } = useForm();
 
+  const {id} = useParams()
+
+  const navegar = useNavigate()
+
+  useEffect(() =>{
+    //si estoy editando la habitacion
+    if(!creandoHabitacion){
+      cargarHabitacionForm()
+    }
+  },[])
+
+  const cargarHabitacionForm = async () => {
+    const respuesta = await obtenerHabitacion(id)
+    if(respuesta.status === 200){
+      const datosHabitacion = await respuesta.json()
+      setValue('numero', datosHabitacion.numero);
+      setValue('tipo', datosHabitacion.tipo);
+      setValue('capacidad', datosHabitacion.capacidad);
+      setValue('precioPorNoche', datosHabitacion.precioPorNoche);
+      setValue('fecha', datosHabitacion.fecha);
+      setValue('imagen', datosHabitacion.imagen);
+    }
+  }
   const habitacionValidada = async (habitacion) => {
-    //le pedimos a la api crear una habitacion
-    const respuesta = await crearHabitacion(habitacion);
-    if (respuesta.status === 201) {
-      Swal.fire({
-        title: "Habitacion creada",
-        text: `La habitacion ${habitacion.numero} fue creada correctamente!`,
-        icon: "success",
-      });
-      reset();
-    } else {
-       Swal.fire({
-        title: "Ocurrio un error",
-        text: `La habitacion ${habitacion.numero} no pudo crearse, intente nuevamente más tarde.`,
-        icon: "error",
-      });
+    if(creandoHabitacion){
+      //le pedimos a la api crear una habitacion
+      const respuesta = await crearHabitacion(habitacion);
+      if (respuesta.status === 201) {
+        Swal.fire({
+          title: "Habitacion creada",
+          text: `La habitacion fue creada correctamente!`,
+          icon: "success",
+        });
+        navegar('/administrador')
+        reset();
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `La habitacion no pudo crearse, intente nuevamente más tarde.`,
+          icon: "error",
+        });
+      }
+    }else{
+      //solicitar a la api editar la habitacion
+      const respuesta = await editarHabitacion(habitacion, id)
+      if(respuesta.status === 200){
+        Swal.fire({
+          title: "Habitacion editada",
+          text: `La habitacion ${id} fue editada correctamente!`,
+          icon: "success",
+        });
+        navegar('/administrador')
+      }else{
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `La habitacion ${id} no pudo ser editada, intente nuevamente más tarde.`,
+          icon: "error",
+        });
+      }
     }
   };
 
   return (
     <section className="container mt-3">
-      <h1>Nueva Habitacion</h1>
+      <h1>{titulo}</h1>
       <hr />
       <Form className="my-4" onSubmit={handleSubmit(habitacionValidada)}>
-        <Form.Group className="mb-3" controlId="formHabitacion">
-          <Form.Label>Numero de Habitacion*</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Ej:01-03-12"
-            {...register("numero", {
-              required: "El numero de habitacion es obligatorio",
-              min: {
-                value: 2,
-                message: "Debe ingresar minimo 2 numeros",
-              },
-              max: {
-                value: 50,
-                message: "Solo existe hasta la habitacion 50",
-              },
-            })}
-          />
-          <Form.Text className="text-danger">
-            {errors.numero?.message}
-          </Form.Text>
-        </Form.Group>
         <Form.Group className="mb-3" controlId="formHabitacion">
           <Form.Label>Tipo de habitacion*</Form.Label>
           <Form.Select
@@ -97,7 +122,7 @@ const FormularioHabitacion = () => {
             })}
           />
           <Form.Text className="text-danger">
-            {errors.numero?.message}
+            {errors.capacidad?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formHabitacion">
@@ -153,12 +178,6 @@ const FormularioHabitacion = () => {
           <Form.Text className="text-danger">
             {errors.imagen?.message}
           </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formHabitacion">
-          <Form.Label>Reserva*</Form.Label>
-          <Form.Control
-           type={Boolean}
-          />
         </Form.Group>
         <Button type="submit" variant="success">
           Guardar

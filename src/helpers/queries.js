@@ -1,6 +1,6 @@
 export const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 
-//solicitud POST a la api
+//POST
 export const crearHabitacion = async (habitacionNueva) => {
   try {
     const respuesta = await fetch(URLHabitaciones, {
@@ -27,3 +27,32 @@ export const leerHabitacion = async()=>{
     return false;
   }
 }
+//GET que trae una habitacion especifica
+export const obtenerHabitacion = async(id)=>{
+  try {
+    const respuesta = await fetch(URLHabitaciones + '/' + id);
+    return respuesta;
+  } catch (error) {
+     console.error(error);
+    return false;
+  }
+}
+
+
+//PUT
+
+export const editarHabitacion = async (habitacionEditada, id) => {
+  try {
+    const respuesta = await fetch(URLHabitaciones + '/' + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(habitacionEditada),
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
