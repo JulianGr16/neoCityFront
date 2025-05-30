@@ -27,6 +27,8 @@ export const leerHabitacion = async()=>{
     return false;
   }
 }
+
+
 //GET que trae una habitacion especifica
 export const obtenerHabitacion = async(id)=>{
   try {
@@ -49,6 +51,20 @@ export const editarHabitacion = async (habitacionEditada, id) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(habitacionEditada),
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+// DELETE
+
+export const eliminarHabitacion = async (id) => {
+  try {
+    const respuesta = await fetch(URLHabitaciones + '/' + id, {
+      method: "DELETE",
     });
     return respuesta;
   } catch (error) {

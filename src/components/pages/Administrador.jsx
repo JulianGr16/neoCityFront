@@ -51,7 +51,7 @@ const Administrador = () => {
           </thead>
           <tbody>
             {
-              habitaciones.map((habitacion, posicion) => <ItemHabitacion key={habitacion.id} habitacion={habitacion} fila={posicion+1}></ItemHabitacion>)
+              habitaciones.map((habitacion, posicion) => <ItemHabitacion key={habitacion.id} habitacion={habitacion} fila={posicion+1} actualizarTabla={setHabitaciones}></ItemHabitacion>)
             }
           </tbody>
         </Table>

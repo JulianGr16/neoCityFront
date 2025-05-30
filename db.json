@@ -1,15 +1,6 @@
 {
   "habitaciones": [
     {
-      "tipo": "Suite Junior",
-      "capacidad": "3",
-      "precioPorNoche": "18000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://wallpapers.com/images/featured/fondods-de-habitacion-de-hotel-qad26bgd35ll4qv6.jpg",
-      "numero": "05",
-      "id": 1
-    },
-    {
       "tipo": "Suite Premium",
       "capacidad": "4",
       "precioPorNoche": "10000",
@@ -18,52 +9,12 @@
       "id": 2
     },
     {
-      "tipo": "Suite Junior",
-      "capacidad": "4",
-      "precioPorNoche": "5000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 3
-    },
-    {
-      "tipo": "Suite Junior",
-      "capacidad": "4",
-      "precioPorNoche": "10000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 4
-    },
-    {
-      "tipo": "Suite Junior",
-      "capacidad": "4",
-      "precioPorNoche": "12000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 5
-    },
-    {
-      "tipo": "Suite Standard",
-      "capacidad": "4",
+      "tipo": "Suite Premium",
+      "capacidad": "2",
       "precioPorNoche": "14000",
       "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 6
-    },
-    {
-      "tipo": "Suite Junior",
-      "capacidad": "4",
-      "precioPorNoche": "12333",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 7
-    },
-    {
-      "tipo": "Suite Premium",
-      "capacidad": "1",
-      "precioPorNoche": "9999",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://media.istockphoto.com/id/517497166/es/foto/conjunto-de-acuarela-cepillos-de-pintura.jpg",
-      "id": 8
+      "imagen": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/12/19/1516/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.jpg/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.16x9.jpg",
+      "id": 3
     }
   ]
 }
