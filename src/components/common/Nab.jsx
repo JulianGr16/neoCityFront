@@ -31,9 +31,9 @@ const Nab = () => {
               <NavLink end to="/administrador" className='nav-link'>
               Administrador
             </NavLink>
-            <Button variant="light">
+            <Link className="btn btn-light" end to={"/login"}>
               <i class="bi bi-person me-1"></i>
-              Iniciar Sesion</Button>
+              Iniciar Sesion</Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

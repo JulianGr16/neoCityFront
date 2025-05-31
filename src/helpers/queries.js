@@ -72,3 +72,19 @@ export const eliminarHabitacion = async (id) => {
     return false;
   }
 };
+
+
+
+const userAdim = {
+  email: "admin@12.com",
+  password: "1234"
+}
+
+  export const login = (usuario) => {
+    if(
+      usuario.user === userAdim.email &&
+      usuario.password === userAdim.password  
+    ){
+      sessionStorage.setItem('NeoCityHotel', JSON.stringify(usuario.email));
+    }
+  }

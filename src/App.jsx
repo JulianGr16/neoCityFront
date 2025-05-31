@@ -11,6 +11,7 @@ import Error from "./components/pages/Error";
 import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones"
 import Administrador from "./components/pages/Administrador";
 import FormHabitacion from "./components/pages/habitacion/FormHabitacion"
+import Login from "./components/pages/Login"
 
 
 
@@ -28,6 +29,7 @@ function App() {
       <Route path="/administrador" element={<Administrador></Administrador>}></Route>
       <Route path="/administrador/crear" element={<FormHabitacion titulo={'Nueva Habitacion'} creandoHabitacion={true}></FormHabitacion>}></Route>
       <Route path="/administrador/editar/:id" element={<FormHabitacion titulo={'Editar Habitacion'} creandoHabitacion={false}></FormHabitacion>}></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>
