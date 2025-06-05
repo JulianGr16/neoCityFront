@@ -6,7 +6,7 @@ import { login } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const formLogin = () => {
+const Login = ({setUsuarioLogueado}) => {
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ const formLogin = () => {
         icon: "success",
       });
       //guardar el usuario en el state
-
+      setUsuarioLogueado(data.email)
       //redirigir al admin
       navegacion("/administrador");
     } else {
@@ -43,7 +43,7 @@ const formLogin = () => {
           Inicio de Sesion
         </Card.Header>
         <Card.Body>
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -52,7 +52,7 @@ const formLogin = () => {
                 {...register("email", {
                   required: "El email es obligatorio",
                   pattern: {
-                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                    value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                     message:
                       "Ingrese una dirección de correo electrónico válida",
                   },
@@ -70,9 +70,9 @@ const formLogin = () => {
                 {...register("password", {
                   required: "La contraseña es obligatoria",
                   pattern: {
-                    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                     message:
-                      "El password debe contener al menos una letra mayúscula, una letra minúscula y un número",
+                      "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
                   },
                 })}
               />
@@ -90,4 +90,4 @@ const formLogin = () => {
   );
 };
 
-export default formLogin;
+export default Login;

@@ -12,24 +12,24 @@ import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones"
 import Administrador from "./components/pages/Administrador";
 import FormHabitacion from "./components/pages/habitacion/FormHabitacion"
 import Login from "./components/pages/Login"
-
+import { useState } from "react";
+import RutasProtegidas from "../routes/RutasProtegidas";
+import RutasAdmin from "../routes/RutasAdmin";
 
 
 function App() {
+
+  const usuario = JSON.parse(sessionStorage.getItem('NeoCityHotel')) || "";
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario)
+
   return (
     <BrowserRouter>
-    <Nab></Nab>
+    <Nab usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Nab>
     <Routes>
       <Route path="/" element={<Index></Index>}></Route>
-      <Route path="/quienesSomos" element={<QuienesSomos></QuienesSomos>}></Route>
-      <Route path="/contacto" element={<Contacto></Contacto>}></Route>
-      <Route path="/galeriaDeImagenes" element={<GaleriaDeImagenes></GaleriaDeImagenes>}></Route>
+      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
+      <Route path="/administrador/*" element={<RutasProtegidas><RutasAdmin></RutasAdmin></RutasProtegidas>}></Route>
       <Route path="*" element={<Error></Error>}></Route>
-      <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
-      <Route path="/administrador" element={<Administrador></Administrador>}></Route>
-      <Route path="/administrador/crear" element={<FormHabitacion titulo={'Nueva Habitacion'} creandoHabitacion={true}></FormHabitacion>}></Route>
-      <Route path="/administrador/editar/:id" element={<FormHabitacion titulo={'Editar Habitacion'} creandoHabitacion={false}></FormHabitacion>}></Route>
-      <Route path="/login" element={<Login></Login>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>

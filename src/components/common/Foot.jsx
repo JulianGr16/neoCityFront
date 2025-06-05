@@ -11,16 +11,16 @@ const Foot = () => {
             <h4>Redes sociales</h4>
             <div className="d-flex justify-content-center">
               <div className="fs-4 mx-2">
-                <i class="bi bi-instagram"></i>
+                <i className="bi bi-instagram"></i>
               </div>
               <div className="fs-4 mx-2">
-                <i class="bi bi-linkedin"></i>
+                <i className="bi bi-linkedin"></i>
               </div>
               <div className="fs-4 mx-2">
-                <i class="bi bi-facebook"></i>
+                <i className="bi bi-facebook"></i>
               </div>
               <div className="fs-4 mx-2">
-                <i class="bi bi-twitter-x"></i>
+                <i className="bi bi-twitter-x"></i>
               </div>
             </div>
           </div>
