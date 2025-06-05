@@ -16,7 +16,6 @@ const Login = ({setUsuarioLogueado}) => {
   const navegacion = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
     if (login(data)) {
       Swal.fire({
         title: "Bienvenido",

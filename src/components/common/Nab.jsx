@@ -3,6 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import { Button } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import "../../App.css";
+import RutasAdmin from "../../../routes/RutasAdmin";
+import RutasProtegidas from "../../../routes/RutasProtegidas";
 
 const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();

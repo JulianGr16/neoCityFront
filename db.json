@@ -1,12 +1,3 @@
 {
-  "habitaciones": [
-    {
-      "tipo": "Suite Standard",
-      "capacidad": "2",
-      "precioPorNoche": "12000",
-      "fecha": "22/12/2025 a 25/12/2025",
-      "imagen": "https://img.freepik.com/foto-gratis/suite-dormitorio-moderno-lujo-renderizado-3d-hotel-tv-gabinete_105762-2276.jpg?semt=ais_hybrid&w=740",
-      "id": 1
-    }
-  ]
+  "habitaciones": []
 }
