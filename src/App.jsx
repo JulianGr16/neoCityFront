@@ -26,7 +26,8 @@ function App() {
       <Route path="*" element={<Error></Error>}></Route>
       <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
       <Route path="/administrador" element={<Administrador></Administrador>}></Route>
-      <Route path="/administrador/crear" element={<FormHabitacion></FormHabitacion>}></Route>
+      <Route path="/administrador/crear" element={<FormHabitacion titulo={'Nueva Habitacion'} creandoHabitacion={true}></FormHabitacion>}></Route>
+      <Route path="/administrador/editar/:id" element={<FormHabitacion titulo={'Editar Habitacion'} creandoHabitacion={false}></FormHabitacion>}></Route>
     </Routes>
     <Foot></Foot>
     </BrowserRouter>
