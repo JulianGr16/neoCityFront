@@ -149,15 +149,10 @@ const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
         <Form.Group className="mb-3" controlId="formHabitacion">
           <Form.Label>Fecha Disponible*</Form.Label>
           <Form.Control
-            type="text"
+            type="date"
             placeholder="Ej:23/06/2025"
             {...register("fecha", {
               required: "La fecha disponible es un campo obligatorio",
-              pattern: {
-                value: /^\d{1,2}\/\d{1,2}\/\d{4} a \d{1,2}\/\d{1,2}\/\d{4}$/,
-                message:
-                  "La fecha debe estar en el formato dd/mm/yyyy a dd/mm/yyyy",
-              },
             })}
           />
           <Form.Text className="text-danger">{errors.fecha?.message}</Form.Text>
