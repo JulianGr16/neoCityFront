@@ -18,34 +18,32 @@ export const crearHabitacion = async (habitacionNueva) => {
 };
 
 //GET
-export const leerHabitacion = async()=>{
+export const leerHabitacion = async () => {
   try {
     const respuesta = await fetch(URLHabitaciones);
     return respuesta;
   } catch (error) {
-     console.error(error);
+    console.error(error);
     return false;
   }
-}
-
+};
 
 //GET que trae una habitacion especifica
-export const obtenerHabitacion = async(id)=>{
+export const obtenerHabitacion = async (id) => {
   try {
-    const respuesta = await fetch(URLHabitaciones + '/' + id);
+    const respuesta = await fetch(URLHabitaciones + "/" + id);
     return respuesta;
   } catch (error) {
-     console.error(error);
+    console.error(error);
     return false;
   }
-}
-
+};
 
 //PUT
 
 export const editarHabitacion = async (habitacionEditada, id) => {
   try {
-    const respuesta = await fetch(URLHabitaciones + '/' + id, {
+    const respuesta = await fetch(URLHabitaciones + "/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -63,12 +61,29 @@ export const editarHabitacion = async (habitacionEditada, id) => {
 
 export const eliminarHabitacion = async (id) => {
   try {
-    const respuesta = await fetch(URLHabitaciones + '/' + id, {
+    const respuesta = await fetch(URLHabitaciones + "/" + id, {
       method: "DELETE",
     });
     return respuesta;
   } catch (error) {
     console.error(error);
+    return false;
+  }
+};
+
+const userAdmin = {
+  email: "admin12@gmail.com",
+  password: "Admin1234",
+};
+
+export const login = (usuario) => {
+  if (
+    usuario.email === userAdmin.email.trim() &&
+    usuario.password === userAdmin.password.trim()
+  ) {
+    sessionStorage.setItem("NeoCityHotel", JSON.stringify(usuario.email));
+    return true;
+  } else {
     return false;
   }
 };
