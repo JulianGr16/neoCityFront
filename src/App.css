@@ -16,25 +16,26 @@
 
 .mainSection {
   flex-grow: 1;
-  background-image: url(./assets/banner-main.jpg);
+  background-image: url(./assets/banner-main.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 3%;
 }
 
 .section-card {
-  background-image: url(./assets/banner-sec-card.jpg);
+  background-image: url(./assets/banner-sec-card.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 5%;
 }
 
 .section-comentarios {
-  background-image: url(./assets/banner-comentarios.jpg);
+  background-image: url(./assets/banner-comentarios.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 2%;
 }
+
 
 .errorSection{
   flex-grow: 1;

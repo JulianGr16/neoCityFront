@@ -1,10 +1,11 @@
 import React from "react";
 import "../../App.css";
 import {Row, Col, Card, Button } from "react-bootstrap";
-import Suite from "../../assets/banner-habitaciones/habitacion-suite.jpg";
-import Premium from "../../assets/banner-habitaciones/habitacion-premium.jpg";
-import Standard from "../../assets/banner-habitaciones/habitacion-standard.jpg";
-import Presidencial from "../../assets/banner-habitaciones/habitacion-presidencial.jpg";
+import Suite from "../../assets/banner-habitaciones/habitacion-suite.webp";
+import Premium from "../../assets/banner-habitaciones/habitacion-premium.webp";
+import Standard from "../../assets/banner-habitaciones/habitacion-standard.webp";
+import Presidencial from "../../assets/banner-habitaciones/habitacion-presidencial.webp";
+
 const CatalogoHabitaciones = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const CatalogoHabitaciones = () => {
           <Row className="justify-content-center">
             <Col className="mb-4 d-flex justify-content-center">
               <Card style={{ width: "18rem", height: "100%" }}>
-                <Card.Img variant="top" src={Suite} style={{ height: "200px", objectFit: "cover" }} />
+                <Card.Img variant="top" src={Suite} style={{ height: "200px", objectFit: "cover" }} loading="lazy"/>
                 <Card.Body >
                   <Card.Title>Suite</Card.Title>
                   <Card.Text>
@@ -30,7 +31,7 @@ const CatalogoHabitaciones = () => {
             </Col>
             <Col className="mb-4 d-flex justify-content-center">
               <Card style={{ width: "18rem", height: "100%" }}>
-                <Card.Img variant="top" src={Premium} style={{ height: "200px", objectFit: "cover" }} />
+                <Card.Img variant="top" src={Premium} style={{ height: "200px", objectFit: "cover" }} loading="lazy"/>
                 <Card.Body>
                   <Card.Title>Premuim</Card.Title>
                   <Card.Text>
@@ -42,7 +43,7 @@ const CatalogoHabitaciones = () => {
             </Col>
             <Col className="mb-4 d-flex justify-content-center">
               <Card style={{ width: "18rem", height: "100%" }}>
-                <Card.Img variant="top" src={Standard} style={{ height: "200px", objectFit: "cover" }} />
+                <Card.Img variant="top" src={Standard} style={{ height: "200px", objectFit: "cover" }} loading="lazy"/>
                 <Card.Body>
                   <Card.Title>Standard</Card.Title>
                   <Card.Text>
@@ -54,7 +55,7 @@ const CatalogoHabitaciones = () => {
             </Col>
             <Col className="mb-4 d-flex justify-content-center">
               <Card style={{ width: "18rem", height: "100%" }}>
-                <Card.Img variant="top" src={Presidencial} style={{ height: "200px", objectFit: "cover" }} />
+                <Card.Img variant="top" src={Presidencial} style={{ height: "200px", objectFit: "cover" }} loading="lazy"/>
                 <Card.Body>
                   <Card.Title>Presidencial</Card.Title>
                   <Card.Text>
