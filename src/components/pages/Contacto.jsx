@@ -1,8 +1,8 @@
-import React from "react";
+import '../../App.css'
 import { Container, Row, Col, Form, FormControl, Button } from "react-bootstrap";
 const Contacto = () => {
   return (
-    <Container className="text-center px-5 py-5">
+    <Container-fluid className="text-center px-5 py-5 mainContactos">
       <Row className="py-5">
         <Col className="text-start">
           <h1 className="text-primary-emphasis">Contactanos</h1>
@@ -55,7 +55,7 @@ const Contacto = () => {
           </Form>
         </Col>
       </Row>
-    </Container>
+    </Container-fluid>
   );
 };
 

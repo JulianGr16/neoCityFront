@@ -37,7 +37,7 @@ const Login = ({setUsuarioLogueado}) => {
 
   return (
     <Container className="flex-grow-1 align-content-center w-25">
-      <Card className="my-5">
+      <Card className="my-5 detalle-card">
         <Card.Header as="h5" className="text-center fw-bold">
           Inicio de Sesion
         </Card.Header>

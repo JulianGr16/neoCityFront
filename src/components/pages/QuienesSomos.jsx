@@ -1,4 +1,3 @@
-import React from "react";
 import julianImg from "../../assets/julianGaray.png";
 import francoImg from "../../assets/francoPereyra.png";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
