@@ -4,7 +4,7 @@ import "../../App.css";
 import { useForm } from "react-hook-form";
 import { login } from "../../helpers/queries";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = ({setUsuarioLogueado}) => {
   const {
@@ -12,6 +12,7 @@ const Login = ({setUsuarioLogueado}) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
 
   const navegacion = useNavigate();
 
@@ -82,6 +83,9 @@ const Login = ({setUsuarioLogueado}) => {
             <Button variant="primary" type="submit">
               Ingresar
             </Button>
+            <NavLink to="/Registrarme" variant="warning" className="btn btn-warning ms-1">
+              Registrarme
+            </NavLink>
           </Form>
         </Card.Body>
       </Card>
