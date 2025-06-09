@@ -1,3 +1,17 @@
 {
-  "habitaciones": []
+  "habitaciones": [],
+  "usuarios": [
+    {
+      "email": "Francopereyra325@gmail.com",
+      "nombreUsuario": "asdasd",
+      "password": "Lm123456",
+      "id": 1
+    },
+    {
+      "email": "claudia-azu@hotmail.com",
+      "nombreUsuario": "asdasd",
+      "password": "Lm1234567",
+      "id": 2
+    }
+  ]
 }

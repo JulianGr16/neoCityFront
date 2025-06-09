@@ -1,7 +1,29 @@
 export const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
+export const URLUsuarios = import.meta.env.VITE_API_USUARIOS
+
+
+//crearUsuario
+export const crearUsuario = async (usuarios) =>{
+  try {
+    const respuesta = await fetch(URLUsuarios,{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarios),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error)
+    return{ok: false};
+  }
+}
+
+
 
 //POST
 export const crearHabitacion = async (habitacionNueva) => {
+  console.log(URLUsuarios)
   try {
     const respuesta = await fetch(URLHabitaciones, {
       method: "POST",
@@ -87,3 +109,5 @@ export const login = (usuario) => {
     return false;
   }
 };
+
+
