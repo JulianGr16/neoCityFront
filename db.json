@@ -27,6 +27,12 @@
       "nombreUsuario": "Pedrito55",
       "password": "Pedroo123",
       "id": 3
+    },
+    {
+      "email": "oscar@gmail.com",
+      "nombreUsuario": "oscarito123",
+      "password": "Oscar321",
+      "id": 4
     }
   ]
 }
