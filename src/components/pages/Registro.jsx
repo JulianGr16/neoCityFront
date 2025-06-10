@@ -10,7 +10,7 @@ import {
 import "../../App.css";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { crearUsuario } from "../../helpers/queries";
+import { crearUsuario } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
 
 const Registro = () => {
