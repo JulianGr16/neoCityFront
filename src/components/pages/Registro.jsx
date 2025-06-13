@@ -10,8 +10,9 @@ import {
 import "../../App.css";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { crearUsuario } from "../../helpers/queries";
+import { crearUsuario } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Registro = () => {
   const [FormData, SetFormData] = useState({
@@ -19,6 +20,8 @@ const Registro = () => {
     email: "",
     password: "",
   });
+
+  const navegacion = useNavigate()
 
   const {
     register,
@@ -40,6 +43,7 @@ const Registro = () => {
     .then((respuesta)=>{
       if(respuesta && respuesta.ok){
         Swal.fire('Usuario creado', 'El usuario ha sido registrado correctamente', 'success')
+        navegacion('/bienvenidos')
       } else{
          Swal.fire('Error', 'No se pudo crear el usuario', 'error');
       }
