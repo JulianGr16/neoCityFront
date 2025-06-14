@@ -16,30 +16,62 @@
 
 .mainSection {
   flex-grow: 1;
-  background-image: url(./assets/banner-main.jpg);
+  background-image: url(./assets/banner-main.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 3%;
 }
 
 .section-card {
-  background-image: url(./assets/banner-sec-card.jpg);
+  background-image: url(./assets/banner-sec-card.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 5%;
 }
 
 .section-comentarios {
-  background-image: url(./assets/banner-comentarios.jpg);
+  background-image: url(./assets/banner-comentarios.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 2%;
 }
 
-.errorSection{
+.errorSection {
   flex-grow: 1;
 }
 
-.mainAdmin{
+.mainAdmin {
   flex-grow: 1;
+}
+
+.mainContactos {
+  background: #c9d6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.detalle-card {
+  box-shadow: 2px 5px 12px 0.2px black;
+}
+
+.mainSomos {
+  background: #c9d6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

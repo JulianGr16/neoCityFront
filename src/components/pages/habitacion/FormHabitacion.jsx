@@ -8,45 +8,50 @@ import {
   FormText,
   FormSelect,
 } from "react-bootstrap";
-import { crearHabitacion, editarHabitacion, leerHabitacion, obtenerHabitacion } from "../../../helpers/queries.js";
+import {
+  crearHabitacion,
+  editarHabitacion,
+  leerHabitacion,
+  obtenerHabitacion,
+} from "../../../helpers/queries.js";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
+const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    setValue
+    setValue,
   } = useForm();
 
-  const {id} = useParams()
+  const { id } = useParams();
 
-  const navegar = useNavigate()
+  const navegar = useNavigate();
 
-  useEffect(() =>{
+  useEffect(() => {
     //si estoy editando la habitacion
-    if(!creandoHabitacion){
-      cargarHabitacionForm()
+    if (!creandoHabitacion) {
+      cargarHabitacionForm();
     }
-  },[])
+  }, []);
 
   const cargarHabitacionForm = async () => {
-    const respuesta = await obtenerHabitacion(id)
-    if(respuesta.status === 200){
-      const datosHabitacion = await respuesta.json()
-      setValue('numero', datosHabitacion.numero);
-      setValue('tipo', datosHabitacion.tipo);
-      setValue('capacidad', datosHabitacion.capacidad);
-      setValue('precioPorNoche', datosHabitacion.precioPorNoche);
-      setValue('fecha', datosHabitacion.fecha);
-      setValue('imagen', datosHabitacion.imagen);
+    const respuesta = await obtenerHabitacion(id);
+    if (respuesta.status === 200) {
+      const datosHabitacion = await respuesta.json();
+      setValue("numero", datosHabitacion.numero);
+      setValue("tipo", datosHabitacion.tipo);
+      setValue("capacidad", datosHabitacion.capacidad);
+      setValue("precioPorNoche", datosHabitacion.precioPorNoche);
+      setValue("fecha", datosHabitacion.fecha);
+      setValue("imagen", datosHabitacion.imagen);
     }
-  }
+  };
   const habitacionValidada = async (habitacion) => {
-    if(creandoHabitacion){
+    if (creandoHabitacion) {
       //le pedimos a la api crear una habitacion
       const respuesta = await crearHabitacion(habitacion);
       if (respuesta.status === 201) {
@@ -55,7 +60,7 @@ const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
           text: `La habitacion fue creada correctamente!`,
           icon: "success",
         });
-        navegar('/administrador')
+        navegar("/administrador");
         reset();
       } else {
         Swal.fire({
@@ -64,17 +69,17 @@ const FormularioHabitacion = ({titulo, creandoHabitacion}) => {
           icon: "error",
         });
       }
-    }else{
+    } else {
       //solicitar a la api editar la habitacion
-      const respuesta = await editarHabitacion(habitacion, id)
-      if(respuesta.status === 200){
+      const respuesta = await editarHabitacion(habitacion, id);
+      if (respuesta.status === 200) {
         Swal.fire({
           title: "Habitacion editada",
           text: `La habitacion ${id} fue editada correctamente!`,
           icon: "success",
         });
-        navegar('/administrador')
-      }else{
+        navegar("/administrador");
+      } else {
         Swal.fire({
           title: "Ocurrio un error",
           text: `La habitacion ${id} no pudo ser editada, intente nuevamente más tarde.`,
