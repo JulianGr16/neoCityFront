@@ -2,7 +2,7 @@
   "habitaciones": [
     {
       "tipo": "Suite Premium",
-      "capacidad": "4",
+      "capacidad": "3",
       "precioPorNoche": "27000",
       "fecha": "2025-06-12",
       "imagen": "https://beltafrajumar.com/wp-content/uploads/2024/03/Como-decorar-una-habitacion-de-un-hotel.jpg",
@@ -17,22 +17,10 @@
       "id": 1
     },
     {
-      "email": "claudia-azu@hotmail.com",
-      "nombreUsuario": "asdasd",
-      "password": "Lm1234567",
+      "email": "pablolol@gmail.com",
+      "nombreUsuario": "Pablin32",
+      "password": "Pablo321",
       "id": 2
-    },
-    {
-      "email": "pedro-rosa12@gmail.com",
-      "nombreUsuario": "Pedrito55",
-      "password": "Pedroo123",
-      "id": 3
-    },
-    {
-      "email": "oscar@gmail.com",
-      "nombreUsuario": "oscarito123",
-      "password": "Oscar321",
-      "id": 4
     }
   ]
 }
