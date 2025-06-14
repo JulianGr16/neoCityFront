@@ -13,6 +13,8 @@ import CatalogoHabitaciones from "./components/pages/CatalogoHabitaciones";
 import QuienesSomos from "./components/pages/QuienesSomos";
 import Contacto from "./components/pages/Contacto";
 import GaleriaDeImagenes from "./components/pages/GaleriaDeImagenes";
+import Registro from "./components/pages/Registro";
+import Bienvenidos from "./components/pages/Bienvenidos";
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
       <Route path="/CatalogoHabitaciones" element={<CatalogoHabitaciones></CatalogoHabitaciones>}></Route>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
       <Route path="/administrador/*" element={<RutasProtegidas><RutasAdmin></RutasAdmin></RutasProtegidas>}></Route>
+      <Route path="/Registrarme" element={<Registro></Registro>}></Route>
+      <Route path="/bienvenidos" element={<Bienvenidos></Bienvenidos>}></Route>
       <Route path="*" element={<Error></Error>}></Route>
     </Routes>
     <Foot></Foot>

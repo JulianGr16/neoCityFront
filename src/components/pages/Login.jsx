@@ -1,17 +1,18 @@
-import { Card, Container, Form } from "react-bootstrap";
+import { Card, Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import "../../App.css";
 import { useForm } from "react-hook-form";
 import { login } from "../../helpers/queries";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Login = ({setUsuarioLogueado}) => {
+const Login = ({ setUsuarioLogueado }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
 
   const navegacion = useNavigate();
 
@@ -23,7 +24,7 @@ const Login = ({setUsuarioLogueado}) => {
         icon: "success",
       });
       //guardar el usuario en el state
-      setUsuarioLogueado(data.email)
+      setUsuarioLogueado(data.email);
       //redirigir al admin
       navegacion("/administrador");
     } else {
@@ -37,7 +38,7 @@ const Login = ({setUsuarioLogueado}) => {
 
   return (
     <Container className="flex-grow-1 align-content-center w-25">
-      <Card className="my-5">
+      <Card className="my-5 detalle-card">
         <Card.Header as="h5" className="text-center fw-bold">
           Inicio de Sesion
         </Card.Header>
@@ -82,6 +83,9 @@ const Login = ({setUsuarioLogueado}) => {
             <Button variant="primary" type="submit">
               Ingresar
             </Button>
+            <NavLink to="/Registrarme" variant="warning" className="btn btn-warning ms-1">
+              Registrarme
+            </NavLink>
           </Form>
         </Card.Body>
       </Card>
