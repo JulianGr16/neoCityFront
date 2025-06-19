@@ -21,7 +21,7 @@ const Registro = () => {
     password: "",
   });
 
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
 
   const {
     register,
@@ -35,24 +35,34 @@ const Registro = () => {
   };
 
   const onSubmit = (data) => {
-    const newData = {...data};
+    const newData = { ...data };
 
-    const nuevoUsuario = {...newData}
+    const nuevoUsuario = { ...newData };
     crearUsuario(nuevoUsuario)
-
-    .then((respuesta)=>{
-      if(respuesta && respuesta.ok){
-        Swal.fire('Usuario creado', 'El usuario ha sido registrado correctamente', 'success')
-        navegacion('/bienvenidos')
-      } else{
-         Swal.fire('Error', 'No se pudo crear el usuario', 'error');
-      }
-    })
-    .catch((error)=>{
-      console.log(error)
-       Swal.fire('Error', 'Hubo un error al crear el usuario', 'error');
-    });
-  }
+      .then((respuesta) => {
+        if (respuesta && respuesta.ok) {
+          const esAdmin = nuevoUsuario.email === "admin@neocity.com" ;
+          sessionStorage.setItem(
+            "usuarioLogueado",
+            JSON.stringify({ ...nuevoUsuario, esAdmin })
+          );
+          Swal.fire(
+            "Usuario creado",
+            `Bienvenido ${
+            esAdmin ? "Administrador" : "Usuario"
+          }, has sido registrado correctamente`,
+          "success"
+          );
+          navegacion("/bienvenidos");
+        } else {
+          Swal.fire("Error", "No se pudo crear el usuario", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire("Error", "Hubo un error al crear el usuario", "error");
+      });
+  };
 
   return (
     <Container className="flex-grow-1 align-content-center w-25">
@@ -79,7 +89,9 @@ const Registro = () => {
                   },
                 })}
               />
-              <Form.Text className="text-danger">{errors.email?.message}</Form.Text>
+              <Form.Text className="text-danger">
+                {errors.email?.message}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Nombre de Usuario</Form.Label>
@@ -100,7 +112,9 @@ const Registro = () => {
                   },
                 })}
               />
-              <Form.Text className="text-danger">{errors.nombreUsuario?.message}</Form.Text>
+              <Form.Text className="text-danger">
+                {errors.nombreUsuario?.message}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Contraseña</Form.Label>
@@ -118,7 +132,9 @@ const Registro = () => {
                   },
                 })}
               />
-              <Form.Text className="text-danger">{errors.password?.message}</Form.Text>
+              <Form.Text className="text-danger">
+                {errors.password?.message}
+              </Form.Text>
             </Form.Group>
             <Button variant="primary" type="submit">
               Registrarme

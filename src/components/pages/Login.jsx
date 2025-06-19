@@ -2,7 +2,7 @@ import { Card, Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import "../../App.css";
 import { useForm } from "react-hook-form";
-import { login } from "../../helpers/queries";
+import { loginUsuario } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -16,21 +16,26 @@ const Login = ({ setUsuarioLogueado }) => {
 
   const navegacion = useNavigate();
 
-  const onSubmit = (data) => {
-    if (login(data)) {
-      Swal.fire({
-        title: "Bienvenido",
-        text: "Ingresaste al panel de Administracion de NeoCity Hotel",
+  const onSubmit = async (data) => {
+    const resultado = await loginUsuario(data)
+
+    if(resultado.ok){
+      const usuario = resultado.usuario;
+      sessionStorage.setItem("NeoCityHotel", JSON.stringify(usuario));
+      setUsuarioLogueado(usuario);
+
+       Swal.fire({
+        title: `Bienvenido ${usuario.nombreUsuario}`,
+        text: usuario.esAdmin
+          ? "Ingresaste como administrador"
+          : "Ingresaste como usuario",
         icon: "success",
       });
-      //guardar el usuario en el state
-      setUsuarioLogueado(data.email);
-      //redirigir al admin
-      navegacion("/administrador");
-    } else {
+      navegacion(usuario.esAdmin ? "/administrador" : "/CatalogoHabitaciones");
+    }else{
       Swal.fire({
-        title: "Oops... Ocurrio un error",
-        text: "El email o la contraseña ingresados son incorrectos",
+        title: "Oops... Ocurrió un error",
+        text: resultado.mensaje,
         icon: "error",
       });
     }

@@ -55,9 +55,6 @@ const Administrador = () => {
             }
           </tbody>
         </Table>
-        <div className="col-sm-12 col-md-12 ">
-          <h2>Usuarios<i class="bi bi-file-earmark-plus btn btn-primary ms-2"></i></h2>
-        </div>
       </article>
     </section>
   );

@@ -21,6 +21,36 @@
       "nombreUsuario": "Pablin32",
       "password": "Pablo321",
       "id": 2
+    },
+    {
+      "email": "calvin12@gmail.com",
+      "nombreUsuario": "CalvinKlain123",
+      "password": "Calvinn12",
+      "id": 3
+    },
+    {
+      "email": "admin@neocity.com",
+      "nombreUsuario": "Pablo15",
+      "password": "Pablin123",
+      "id": 4
+    },
+    {
+      "email": "admin15@neocity.com",
+      "nombreUsuario": "robin32",
+      "password": "Rorololo12",
+      "id": 5
+    },
+    {
+      "email": "admin@neocity.com",
+      "nombreUsuario": "Julio80",
+      "password": "Julito32",
+      "id": 6
+    },
+    {
+      "email": "admin@neocity.com",
+      "nombreUsuario": "Franco23",
+      "password": "Fran4321",
+      "id": 7
     }
   ]
 }

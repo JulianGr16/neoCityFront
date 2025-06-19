@@ -1,29 +1,63 @@
 export const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
-export const URLUsuarios = import.meta.env.VITE_API_USUARIOS
+export const URLUsuarios = import.meta.env.VITE_API_USUARIOS;
 
+//loginUsuario
+const adminEmails = [
+  "admin12@gmail.com",
+  "admin@neocity.com",
+  "admin20@neocity.com",
+];
+
+export const loginUsuario = async ({ email, password }) => {
+  try {
+    const respuesta = await fetch(
+      `${URLUsuarios}?email=${email}&password=${password}`
+    );
+    const datos = await respuesta.json();
+
+    if (datos.length > 0) {
+      const usuario = datos[0];
+      const esAdmin = adminEmails.includes(usuario.email);
+
+      return {
+        ok: true,
+        usuario: { ...usuario, esAdmin },
+      };
+    } else {
+      return {
+        ok: false,
+        mensaje: "Email o contraseña incorrectos",
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+      mensaje: "Error al conectar con el servidor",
+    };
+  }
+};
 
 //crearUsuario
-export const crearUsuario = async (usuarios) =>{
+export const crearUsuario = async (usuarios) => {
   try {
-    const respuesta = await fetch(URLUsuarios,{
+    const respuesta = await fetch(URLUsuarios, {
       method: "POST",
-      headers:{
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(usuarios),
     });
     return respuesta;
   } catch (error) {
-    console.log(error)
-    return{ok: false};
+    console.log(error);
+    return { ok: false };
   }
-}
-
-
+};
 
 //POST
 export const crearHabitacion = async (habitacionNueva) => {
-  console.log(URLUsuarios)
+  console.log(URLUsuarios);
   try {
     const respuesta = await fetch(URLHabitaciones, {
       method: "POST",
@@ -92,22 +126,3 @@ export const eliminarHabitacion = async (id) => {
     return false;
   }
 };
-
-const userAdmin = {
-  email: "admin12@gmail.com",
-  password: "Admin1234",
-};
-
-export const login = (usuario) => {
-  if (
-    usuario.email === userAdmin.email.trim() &&
-    usuario.password === userAdmin.password.trim()
-  ) {
-    sessionStorage.setItem("NeoCityHotel", JSON.stringify(usuario.email));
-    return true;
-  } else {
-    return false;
-  }
-};
-
-

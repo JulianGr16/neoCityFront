@@ -47,7 +47,7 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
             <NavLink end to="/CatalogoHabitaciones" className="nav-link">
               Catálogo de Habitaciones
             </NavLink>
-            {usuarioLogueado !== "" && (
+            {usuarioLogueado?.esAdmin && (
               <NavLink end to="/administrador" className="nav-link">
                 Administrador
               </NavLink>
