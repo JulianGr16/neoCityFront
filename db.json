@@ -7,6 +7,14 @@
       "fecha": "2025-06-12",
       "imagen": "https://beltafrajumar.com/wp-content/uploads/2024/03/Como-decorar-una-habitacion-de-un-hotel.jpg",
       "id": 1
+    },
+    {
+      "tipo": "Suite Standard",
+      "capacidad": "1",
+      "precioPorNoche": "15000",
+      "fecha": "2025-07-12",
+      "imagen": "https://beltafrajumar.com/wp-content/uploads/2024/03/Como-decorar-una-habitacion-de-un-hotel.jpg",
+      "id": 2
     }
   ],
   "usuarios": [
