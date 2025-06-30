@@ -54,6 +54,12 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
             )}
           </Nav>
           <Nav className="ms-auto me-5 align-items-center">
+            {usuarioLogueado !== "" && !usuarioLogueado?.esAdmin && (
+              <NavLink className="btn btn-outline-light me-2" end to="/mis-reservas">
+                <i className="bi bi-calendar-check me-1"></i>
+                Mis Reservas
+              </NavLink>
+            )}
             {usuarioLogueado !== "" ? (
               <Button variant="danger" onClick={logout}>
                 Cerrar Sesion

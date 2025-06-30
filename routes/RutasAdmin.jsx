@@ -1,10 +1,5 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Administrador from "../src/components/pages/Administrador";
-import CatalogoHabitaciones from "../src/components/pages/CatalogoHabitaciones";
-import Contacto from "../src/components/pages/Contacto";
-import GaleriaDeImagenes from "../src/components/pages/GaleriaDeImagenes";
-import QuienesSomos from "../src/components/pages/QuienesSomos";
 import FormHabitacion from "../src/components/pages/habitacion/FormHabitacion";
 
 const RutasAdmin = () => {

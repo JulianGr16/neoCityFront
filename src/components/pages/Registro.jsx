@@ -6,6 +6,7 @@ import {
   Container,
   Form,
   FormLabel,
+  InputGroup,
 } from "react-bootstrap";
 import "../../App.css";
 import { useForm } from "react-hook-form";
@@ -20,6 +21,7 @@ const Registro = () => {
     email: "",
     password: "",
   });
+  const [mostrarPassword, setMostrarPassword] = useState(false);
 
   const navegacion = useNavigate();
 
@@ -34,40 +36,42 @@ const Registro = () => {
     SetFormData({ ...FormData, [name]: value });
   };
 
-  const onSubmit = (data) => {
-    const newData = { ...data };
+  const togglePasswordVisibility = () => {
+    setMostrarPassword(!mostrarPassword);
+  };
 
-    const nuevoUsuario = { ...newData };
-    crearUsuario(nuevoUsuario)
-      .then((respuesta) => {
-        if (respuesta && respuesta.ok) {
-          const esAdmin = nuevoUsuario.email === "admin@neocity.com" ;
-          sessionStorage.setItem(
-            "usuarioLogueado",
-            JSON.stringify({ ...nuevoUsuario, esAdmin })
-          );
-          Swal.fire(
-            "Usuario creado",
-            `Bienvenido ${
-            esAdmin ? "Administrador" : "Usuario"
-          }, has sido registrado correctamente`,
-          "success"
-          );
-          navegacion("/bienvenidos");
-        } else {
-          Swal.fire("Error", "No se pudo crear el usuario", "error");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire("Error", "Hubo un error al crear el usuario", "error");
+  const onSubmit = async (data) => {
+    try {
+      const respuesta = await crearUsuario(data);
+
+      if (respuesta.ok) {
+        Swal.fire({
+          title: "Usuario creado",
+          text: "Has sido registrado correctamente. Ahora puedes iniciar sesión.",
+          icon: "success",
+        });
+        navegacion("/login");
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: respuesta.mensaje || "No se pudo crear el usuario",
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un error al crear el usuario",
+        icon: "error",
       });
+    }
   };
 
   return (
     <Container className="flex-grow-1 align-content-center w-25">
       <Card className="my-5 detalle-card">
-        <Card.Header as="h5" className="fw-bold">
+        <Card.Header as="h5" className="text-center fw-bold">
           Registrarme
         </Card.Header>
         <Card.Body>
@@ -118,27 +122,48 @@ const Registro = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Contraseña</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                onChange={handleChange}
-                placeholder="Luxo123"
-                {...register("password", {
-                  required: "La contraseña es obligatoria",
-                  pattern: {
-                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                    message:
-                      "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
-                  },
-                })}
-              />
+              <InputGroup>
+                <Form.Control
+                  type={mostrarPassword ? "text" : "password"}
+                  name="password"
+                  onChange={handleChange}
+                  placeholder="Luxo123"
+                  {...register("password", {
+                    required: "La contraseña es obligatoria",
+                    pattern: {
+                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                      message:
+                        "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                    },
+                  })}
+                />
+                <Button
+                  variant="outline-secondary"
+                  onClick={togglePasswordVisibility}
+                  type="button"
+                >
+                  <i
+                    className={
+                      mostrarPassword ? "bi bi-eye-slash" : "bi bi-eye"
+                    }
+                  ></i>
+                </Button>
+              </InputGroup>
               <Form.Text className="text-danger">
                 {errors.password?.message}
               </Form.Text>
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Registrarme
-            </Button>
+            <div className="d-flex justify-content-between">
+              <Button variant="primary" type="submit">
+                Registrarme
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => navegacion("/login")}
+              >
+                Volver al Login
+              </Button>
+            </div>
           </Form>
         </Card.Body>
       </Card>

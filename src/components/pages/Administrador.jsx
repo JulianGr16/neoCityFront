@@ -46,6 +46,7 @@ const Administrador = () => {
               <th>Capacidad de personas</th>
               <th>URL de Imagen</th>
               <th>Precio por noche</th>
+              <th>Estado</th>
               <th>Opciones</th>
             </tr>
           </thead>

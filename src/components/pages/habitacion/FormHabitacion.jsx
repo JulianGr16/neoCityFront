@@ -48,6 +48,7 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
       setValue("precioPorNoche", datosHabitacion.precioPorNoche);
       setValue("fecha", datosHabitacion.fecha);
       setValue("imagen", datosHabitacion.imagen);
+      setValue("reserva", datosHabitacion.reserva ? "true" : "false");
     }
   };
   const habitacionValidada = async (habitacion) => {
@@ -75,14 +76,14 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
       if (respuesta.status === 200) {
         Swal.fire({
           title: "Habitacion editada",
-          text: `La habitacion ${id} fue editada correctamente!`,
+          text: `La habitacion fue editada correctamente!`,
           icon: "success",
         });
         navegar("/administrador");
       } else {
         Swal.fire({
           title: "Ocurrio un error",
-          text: `La habitacion ${id} no pudo ser editada, intente nuevamente más tarde.`,
+          text: `La habitacion no pudo ser editada, intente nuevamente más tarde.`,
           icon: "error",
         });
       }
@@ -103,6 +104,7 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
             })}
           >
             <option value="">Seleccione una opcion</option>
+            <option value="Suite">Suite</option>
             <option value="Suite Standard">Suite Standard</option>
             <option value="Suite Junior">Suite Junior</option>
             <option value="Suite Premium">Suite Premium</option>
@@ -162,6 +164,19 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
           />
           <Form.Text className="text-danger">{errors.fecha?.message}</Form.Text>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formEstado">
+          <Form.Label>Estado de la habitación*</Form.Label>
+          <Form.Select
+            {...register("reserva", {
+              required: "El estado de la habitación es obligatorio",
+            })}
+          >
+            <option value="">Seleccione el estado</option>
+            <option value="false">Disponible</option>
+            <option value="true">Ocupada</option>
+          </Form.Select>
+          <Form.Text className="text-danger">{errors.reserva?.message}</Form.Text>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formHabitacion">
           <Form.Label>Imagen URL*</Form.Label>
           <Form.Control
@@ -181,6 +196,13 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
         </Form.Group>
         <Button type="submit" variant="success">
           Guardar
+        </Button>
+        <Button 
+          variant="secondary" 
+          className="ms-2"
+          onClick={() => navegar("/administrador")}
+        >
+          Cancelar
         </Button>
       </Form>
     </section>
