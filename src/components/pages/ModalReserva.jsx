@@ -41,15 +41,15 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
         cantidadPersonas: parseInt(data.cantidadPersonas),
         cantidadNoches: cantidadNoches,
         precioTotal: precioTotal,
-        estado: "confirmada"
+        estado: "pendiente"
       };
 
       const respuesta = await crearReserva(reservaData);
       
       if (respuesta.status === 201) {
         Swal.fire({
-          title: "¡Reserva confirmada!",
-          text: `Tu reserva para ${habitacion.tipo} ha sido confirmada exitosamente para ${data.cantidadPersonas} ${data.cantidadPersonas === "1" ? "persona" : "personas"}.`,
+          title: "¡Reserva creada!",
+          text: `Tu reserva para ${habitacion.tipo} está pendiente de confirmación. Puedes confirmarla desde "Mis Reservas".`,
           icon: "success",
         });
         reset();

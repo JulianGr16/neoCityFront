@@ -156,6 +156,35 @@ const MisReservas = () => {
     });
   };
 
+  const confirmarReserva = async (reserva) => {
+    try {
+      const reservaActualizada = {
+        ...reserva,
+        estado: "confirmada"
+      };
+
+      const respuesta = await editarReserva(reservaActualizada, reserva.id);
+      
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "¡Reserva confirmada!",
+          text: "Tu reserva ha sido confirmada exitosamente.",
+          icon: "success",
+        });
+        cargarReservas();
+      } else {
+        throw new Error("Error al confirmar la reserva");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo confirmar la reserva. Intenta nuevamente más tarde.",
+        icon: "error",
+      });
+    }
+  };
+
   const formatearFecha = (fecha) => {
     return new Date(fecha).toLocaleDateString('es-ES', {
       year: 'numeric',
@@ -297,28 +326,42 @@ const MisReservas = () => {
                             </span>
                           </div>
                           
-                          {reserva.estado === 'confirmada' && (
-                            <div className="d-flex gap-2">
+                          {reserva.estado === 'pendiente' && (
+                            <div className="d-flex gap-2 mb-2">
                               <Button
-                                variant="outline-primary"
+                                variant="success"
                                 size="sm"
-                                className="flex-fill"
-                                onClick={() => abrirModalEditar(reserva)}
+                                className="w-100"
+                                onClick={() => confirmarReserva(reserva)}
                               >
-                                <i className="bi bi-pencil me-1"></i>
-                                Modificar
-                              </Button>
-                              <Button
-                                variant="outline-danger"
-                                size="sm"
-                                className="flex-fill"
-                                onClick={() => cancelarReserva(reserva)}
-                              >
-                                <i className="bi bi-x-circle me-1"></i>
-                                Cancelar
+                                <i className="bi bi-check-circle me-1"></i>
+                                Confirmar Reserva
                               </Button>
                             </div>
                           )}
+                          
+                          <div className="d-flex gap-2">
+                            <Button
+                              variant="outline-primary"
+                              size="sm"
+                              className="flex-fill"
+                              onClick={() => abrirModalEditar(reserva)}
+                              disabled={reserva.estado === 'cancelada'}
+                            >
+                              <i className="bi bi-pencil me-1"></i>
+                              Modificar
+                            </Button>
+                            <Button
+                              variant="outline-danger"
+                              size="sm"
+                              className="flex-fill"
+                              onClick={() => cancelarReserva(reserva)}
+                              disabled={reserva.estado === 'cancelada'}
+                            >
+                              <i className="bi bi-x-circle me-1"></i>
+                              Cancelar
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </Card.Body>
