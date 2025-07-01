@@ -216,3 +216,14 @@ export const eliminarReserva = async (id) => {
     return false;
   }
 };
+
+// OBTENER UN USUARIO ESPECÍFICO
+export const obtenerUsuario = async (id) => {
+  try {
+    const respuesta = await fetch(`${URLUsuarios}/${id}`);
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
