@@ -29,13 +29,25 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
   const cantidadNoches = calcularNoches(fechaCheckIn, fechaCheckOut);
   const precioTotal = cantidadNoches * parseFloat(habitacion?.precioPorNoche || 0);
 
+  // Función helper para formatear fecha
+  const formatearFecha = (fecha) => {
+    const year = fecha.getFullYear();
+    const month = fecha.getMonth() + 1;
+    const day = fecha.getDate();
+    
+    const monthStr = month < 10 ? '0' + month : month;
+    const dayStr = day < 10 ? '0' + day : day;
+    
+    return year + '-' + monthStr + '-' + dayStr;
+  };
+
   const onSubmit = async (data) => {
     setLoading(true);
     try {
       const reservaData = {
         usuarioId: usuarioLogueado.id,
         habitacionId: habitacion.id,
-        fechaReserva: new Date().toISOString().split('T')[0],
+        fechaReserva: formatearFecha(new Date()),
         fechaCheckIn: data.fechaCheckIn,
         fechaCheckOut: data.fechaCheckOut,
         cantidadPersonas: parseInt(data.cantidadPersonas),
@@ -77,14 +89,14 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
   // Obtener la fecha de mañana como mínimo para check-in
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split('T')[0];
+  const minDate = formatearFecha(tomorrow);
 
   // Obtener la fecha mínima para check-out (un día después del check-in)
   const getMinCheckOut = () => {
     if (!fechaCheckIn) return minDate;
     const checkInDate = new Date(fechaCheckIn);
     checkInDate.setDate(checkInDate.getDate() + 1);
-    return checkInDate.toISOString().split('T')[0];
+    return formatearFecha(checkInDate);
   };
 
   return (

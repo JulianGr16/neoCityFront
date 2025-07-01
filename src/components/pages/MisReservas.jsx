@@ -164,6 +164,14 @@ const MisReservas = () => {
     });
   };
 
+  // Función helper para formatear fecha
+  const formatearFechaInput = (fecha) => {
+    const year = fecha.getFullYear();
+    const month = String(fecha.getMonth() + 1).padStart(2, '0');
+    const day = String(fecha.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const getEstadoBadge = (estado) => {
     switch (estado) {
       case 'confirmada':
@@ -180,14 +188,14 @@ const MisReservas = () => {
   // Obtener la fecha de mañana como mínimo para check-in
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split('T')[0];
+  const minDate = formatearFechaInput(tomorrow);
 
   // Obtener la fecha mínima para check-out (un día después del check-in)
   const getMinCheckOut = () => {
     if (!fechaCheckIn) return minDate;
     const checkInDate = new Date(fechaCheckIn);
     checkInDate.setDate(checkInDate.getDate() + 1);
-    return checkInDate.toISOString().split('T')[0];
+    return formatearFechaInput(checkInDate);
   };
 
   if (loading) {
