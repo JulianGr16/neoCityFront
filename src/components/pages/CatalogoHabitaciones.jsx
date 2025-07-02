@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import "../../App.css";
 import { Row, Col, Card, Button, Badge, Alert } from "react-bootstrap";
@@ -89,7 +90,6 @@ const CatalogoHabitaciones = () => {
       </section>
     );
   }
-
   return (
     <>
       <section className="container-fluid section-card py-4 flex-grow-1">
