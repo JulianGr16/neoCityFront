@@ -10,11 +10,8 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
 
   const logout = () => {
-    //quita el usuario del sesionStorage
     sessionStorage.removeItem("NeoCityHotel");
-    //resetea el state
     setUsuarioLogueado("");
-    //redirecciona a la pagina principal
     navegacion("/");
   };
 
@@ -76,5 +73,6 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
     </>
   );
 };
+
 
 export default Nab;

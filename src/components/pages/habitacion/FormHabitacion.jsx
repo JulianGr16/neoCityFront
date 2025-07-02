@@ -32,7 +32,6 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
   const navegar = useNavigate();
 
   useEffect(() => {
-    //si estoy editando la habitacion
     if (!creandoHabitacion) {
       cargarHabitacionForm();
     }
@@ -53,7 +52,6 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
   };
   const habitacionValidada = async (habitacion) => {
     if (creandoHabitacion) {
-      //le pedimos a la api crear una habitacion
       const respuesta = await crearHabitacion(habitacion);
       if (respuesta.status === 201) {
         Swal.fire({
@@ -71,7 +69,6 @@ const FormularioHabitacion = ({ titulo, creandoHabitacion }) => {
         });
       }
     } else {
-      //solicitar a la api editar la habitacion
       const respuesta = await editarHabitacion(habitacion, id);
       if (respuesta.status === 200) {
         Swal.fire({

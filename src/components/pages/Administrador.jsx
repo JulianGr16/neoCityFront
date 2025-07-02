@@ -7,7 +7,6 @@ import { leerHabitacion } from "../../helpers/queries";
 import ItemHabitacion from "./habitacion/ItemHabitacion";
 import Swal from "sweetalert2";
 
-
 const Administrador = () => {
 
   const [habitaciones, setHabitaciones] = useState([]);

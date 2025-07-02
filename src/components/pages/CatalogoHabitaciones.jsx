@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "../../App.css";
 import { Row, Col, Card, Button, Badge, Alert } from "react-bootstrap";
@@ -168,7 +167,6 @@ const CatalogoHabitaciones = () => {
         </article>
       </section>
 
-      {/* Modal de Reserva */}
       <ModalReserva
         show={showModal}
         onHide={cerrarModal}
@@ -178,6 +176,5 @@ const CatalogoHabitaciones = () => {
     </>
   );
 };
-
 
 export default CatalogoHabitaciones;

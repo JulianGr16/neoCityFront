@@ -29,7 +29,6 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
   const cantidadNoches = calcularNoches(fechaCheckIn, fechaCheckOut);
   const precioTotal = cantidadNoches * parseFloat(habitacion?.precioPorNoche || 0);
 
-  // Función helper para formatear fecha
   const formatearFecha = (fecha) => {
     const year = fecha.getFullYear();
     const month = fecha.getMonth() + 1;
@@ -86,12 +85,10 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
     onHide();
   };
 
-  // Obtener la fecha de mañana como mínimo para check-in
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = formatearFecha(tomorrow);
 
-  // Obtener la fecha mínima para check-out (un día después del check-in)
   const getMinCheckOut = () => {
     if (!fechaCheckIn) return minDate;
     const checkInDate = new Date(fechaCheckIn);
@@ -245,5 +242,6 @@ const ModalReserva = ({ show, onHide, habitacion, usuarioLogueado }) => {
     </Modal>
   );
 };
+
 
 export default ModalReserva;

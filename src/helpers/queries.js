@@ -2,7 +2,6 @@ export const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 export const URLUsuarios = import.meta.env.VITE_API_USUARIOS;
 export const URLReservas = import.meta.env.VITE_API_RESERVAS;
 
-// LOGIN - Para backend MongoDB
 export const loginUsuario = async ({ email, password }) => {
   try {
     const respuesta = await fetch(`${URLUsuarios}/login`, {
@@ -35,7 +34,6 @@ export const loginUsuario = async ({ email, password }) => {
   }
 };
 
-// CREAR USUARIO - Para backend MongoDB
 export const crearUsuario = async (usuario) => {
   try {
     const respuesta = await fetch(URLUsuarios, {
@@ -68,7 +66,6 @@ export const crearUsuario = async (usuario) => {
   }
 };
 
-// CREAR HABITACION
 export const crearHabitacion = async (habitacionNueva) => {
   try {
     const respuesta = await fetch(URLHabitaciones, {
@@ -85,7 +82,6 @@ export const crearHabitacion = async (habitacionNueva) => {
   }
 };
 
-// LEER HABITACIONES
 export const leerHabitacion = async () => {
   try {
     const respuesta = await fetch(URLHabitaciones);
@@ -96,7 +92,6 @@ export const leerHabitacion = async () => {
   }
 };
 
-// OBTENER UNA HABITACION ESPECÍFICA
 export const obtenerHabitacion = async (id) => {
   try {
     const respuesta = await fetch(`${URLHabitaciones}/${id}`);
@@ -107,7 +102,6 @@ export const obtenerHabitacion = async (id) => {
   }
 };
 
-// EDITAR HABITACION
 export const editarHabitacion = async (habitacionEditada, id) => {
   try {
     const respuesta = await fetch(`${URLHabitaciones}/${id}`, {
@@ -124,7 +118,6 @@ export const editarHabitacion = async (habitacionEditada, id) => {
   }
 };
 
-// ELIMINAR HABITACION
 export const eliminarHabitacion = async (id) => {
   try {
     const respuesta = await fetch(`${URLHabitaciones}/${id}`, {
@@ -137,7 +130,6 @@ export const eliminarHabitacion = async (id) => {
   }
 };
 
-// CREAR RESERVA
 export const crearReserva = async (reservaNueva) => {
   try {
     const respuesta = await fetch(URLReservas, {
@@ -154,7 +146,6 @@ export const crearReserva = async (reservaNueva) => {
   }
 };
 
-// LEER RESERVAS DE UN USUARIO
 export const leerReservasUsuario = async (usuarioId) => {
   try {
     const respuesta = await fetch(`${URLReservas}?usuarioId=${usuarioId}`);
@@ -165,7 +156,6 @@ export const leerReservasUsuario = async (usuarioId) => {
   }
 };
 
-// LEER TODAS LAS RESERVAS
 export const leerReservas = async () => {
   try {
     const respuesta = await fetch(URLReservas);
@@ -176,7 +166,6 @@ export const leerReservas = async () => {
   }
 };
 
-// OBTENER UNA RESERVA ESPECÍFICA
 export const obtenerReserva = async (id) => {
   try {
     const respuesta = await fetch(`${URLReservas}/${id}`);
@@ -187,7 +176,6 @@ export const obtenerReserva = async (id) => {
   }
 };
 
-// EDITAR RESERVA
 export const editarReserva = async (reservaEditada, id) => {
   try {
     const respuesta = await fetch(`${URLReservas}/${id}`, {
@@ -204,7 +192,6 @@ export const editarReserva = async (reservaEditada, id) => {
   }
 };
 
-// ELIMINAR RESERVA
 export const eliminarReserva = async (id) => {
   try {
     const respuesta = await fetch(`${URLReservas}/${id}`, {
@@ -217,7 +204,6 @@ export const eliminarReserva = async (id) => {
   }
 };
 
-// OBTENER UN USUARIO ESPECÍFICO
 export const obtenerUsuario = async (id) => {
   try {
     const respuesta = await fetch(`${URLUsuarios}/${id}`);
@@ -228,7 +214,6 @@ export const obtenerUsuario = async (id) => {
   }
 };
 
-// LISTAR TODOS LOS USUARIOS
 export const listarUsuarios = async () => {
   try {
     const respuesta = await fetch(URLUsuarios);
@@ -239,7 +224,6 @@ export const listarUsuarios = async () => {
   }
 };
 
-// EDITAR USUARIO
 export const editarUsuario = async (usuarioEditado, id) => {
   try {
     const respuesta = await fetch(`${URLUsuarios}/${id}`, {
@@ -256,7 +240,6 @@ export const editarUsuario = async (usuarioEditado, id) => {
   }
 };
 
-// SUSPENDER/ACTIVAR CUENTA DE USUARIO
 export const cambiarEstadoCuentaUsuario = async (id, cuentaSuspendida) => {
   try {
     const respuesta = await fetch(`${URLUsuarios}/${id}/estado`, {
@@ -273,7 +256,6 @@ export const cambiarEstadoCuentaUsuario = async (id, cuentaSuspendida) => {
   }
 };
 
-// ELIMINAR USUARIO
 export const eliminarUsuario = async (id) => {
   try {
     const respuesta = await fetch(`${URLUsuarios}/${id}`, {

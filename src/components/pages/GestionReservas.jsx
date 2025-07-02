@@ -24,12 +24,10 @@ const GestionReservas = () => {
         const reservasData = await respuestaReservas.json();
         setReservas(reservasData);
 
-        // Cargar información de las habitaciones
         const habitacionesData = {};
         const usuariosData = {};
         
         for (const reserva of reservasData) {
-          // Cargar habitación si no está cargada
           if (!habitacionesData[reserva.habitacionId]) {
             const respuestaHabitacion = await obtenerHabitacion(reserva.habitacionId);
             if (respuestaHabitacion.status === 200) {
@@ -38,7 +36,6 @@ const GestionReservas = () => {
             }
           }
 
-          // Cargar usuario si no está cargado
           if (!usuariosData[reserva.usuarioId]) {
             try {
               const respuestaUsuario = await fetch(`http://localhost:3001/api/usuarios/${reserva.usuarioId}`);

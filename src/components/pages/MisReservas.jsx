@@ -39,7 +39,6 @@ const MisReservas = () => {
         const reservasData = await respuestaReservas.json();
         setReservas(reservasData);
 
-        // Cargar información de las habitaciones
         const habitacionesData = {};
         for (const reserva of reservasData) {
           if (!habitacionesData[reserva.habitacionId]) {
@@ -193,7 +192,6 @@ const MisReservas = () => {
     });
   };
 
-  // Función helper para formatear fecha
   const formatearFechaInput = (fecha) => {
     const year = fecha.getFullYear();
     const month = String(fecha.getMonth() + 1).padStart(2, '0');
@@ -214,12 +212,10 @@ const MisReservas = () => {
     }
   };
 
-  // Obtener la fecha de mañana como mínimo para check-in
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = formatearFechaInput(tomorrow);
 
-  // Obtener la fecha mínima para check-out (un día después del check-in)
   const getMinCheckOut = () => {
     if (!fechaCheckIn) return minDate;
     const checkInDate = new Date(fechaCheckIn);
@@ -381,7 +377,6 @@ const MisReservas = () => {
         )}
       </Container>
 
-      {/* Modal para editar reserva */}
       <Modal show={showEditModal} onHide={cerrarModalEditar} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>
