@@ -227,3 +227,61 @@ export const obtenerUsuario = async (id) => {
     return false;
   }
 };
+
+// LISTAR TODOS LOS USUARIOS
+export const listarUsuarios = async () => {
+  try {
+    const respuesta = await fetch(URLUsuarios);
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+// EDITAR USUARIO
+export const editarUsuario = async (usuarioEditado, id) => {
+  try {
+    const respuesta = await fetch(`${URLUsuarios}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioEditado),
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+// SUSPENDER/ACTIVAR CUENTA DE USUARIO
+export const cambiarEstadoCuentaUsuario = async (id, cuentaSuspendida) => {
+  try {
+    const respuesta = await fetch(`${URLUsuarios}/${id}/estado`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cuentaSuspendida }),
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+// ELIMINAR USUARIO
+export const eliminarUsuario = async (id) => {
+  try {
+    const respuesta = await fetch(`${URLUsuarios}/${id}`, {
+      method: "DELETE",
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
