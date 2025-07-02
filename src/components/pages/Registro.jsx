@@ -59,7 +59,6 @@ const Registro = () => {
         });
       }
     } catch (error) {
-      console.log(error);
       Swal.fire({
         title: "Error",
         text: "Hubo un error al crear el usuario",
