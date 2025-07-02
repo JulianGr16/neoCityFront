@@ -1,0 +1,76 @@
+import { Button, Table } from "react-bootstrap";
+import "../../App.css";
+import { useEffect, useState } from "react";
+import { URLHabitaciones } from "../../helpers/queries";
+import { Link} from "react-router-dom";
+import { leerHabitacion } from "../../helpers/queries";
+import ItemHabitacion from "./habitacion/ItemHabitacion";
+import Swal from "sweetalert2";
+
+
+const Administrador = () => {
+
+  const [habitaciones, setHabitaciones] = useState([]);
+
+  useEffect(()=>{
+    obtenerHabitaciones()
+  },[])
+
+  const  obtenerHabitaciones = async() => {
+    const respuesta = await leerHabitacion()
+    if(respuesta.status === 200){
+      const datos = await respuesta.json()
+      setHabitaciones(datos)
+    }else{
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `No se pudieron obtener la lista de habitaciones, intente nuevamente mas tarde.`,
+        icon: "error",
+      })
+    }
+  }
+
+  return (
+    <section className="container mainAdmin py-3">
+      <h1 className="text-center">Administrador</h1>
+      <article className="row">
+        <div className="col-sm-12 col-md-4 my-3">
+          <h2>Habitaciones <Link to="/administrador/crear"><i className="bi bi-file-earmark-plus btn btn-primary"></i></Link></h2> 
+        </div>
+        <div className="col-sm-12 col-md-4 my-3 text-center">
+          <Link to="/administrador/reservas" className="btn btn-info me-2">
+            <i className="bi bi-calendar-check me-2"></i>
+            Ver Reservas
+          </Link>
+        </div>
+        <div className="col-sm-12 col-md-4 my-3 text-end">
+          <Link to="/administrador/usuarios" className="btn btn-warning">
+            <i className="bi bi-people me-2"></i>
+            Gestionar Usuarios
+          </Link>
+        </div>
+        <hr />
+        <Table responsive striped bordered hover>
+          <thead>
+            <tr className="text-center">
+              <th>Numero Habitacion</th>
+              <th>Tipo de Habitacion</th>
+              <th>Capacidad de personas</th>
+              <th>URL de Imagen</th>
+              <th>Precio por noche</th>
+              <th>Estado</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              habitaciones.map((habitacion, posicion) => <ItemHabitacion key={habitacion.id} habitacion={habitacion} fila={posicion+1} actualizarTabla={setHabitaciones}></ItemHabitacion>)
+            }
+          </tbody>
+        </Table>
+      </article>
+    </section>
+  );
+};
+
+export default Administrador;
