@@ -2,7 +2,7 @@ import '../../App.css'
 import { Container, Row, Col, Form, FormControl, Button } from "react-bootstrap";
 const Contacto = () => {
   return (
-    <Container-fluid className="text-center px-5 py-5 mainContactos">
+    <Container-fluid className="text-center px-5 py-5 mainContactos flex-grow-1">
       <Row className="py-5">
         <Col className="text-start">
           <h1 className="text-primary-emphasis">Contactanos</h1>

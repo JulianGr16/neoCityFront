@@ -1,39 +1,34 @@
-import { Button } from "react-bootstrap";
+import { Button, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { eliminarHabitacion, leerHabitacion } from "../../../helpers/queries";
+import { eliminarHabitacion } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 
 const ItemHabitacion = ({ habitacion, fila, actualizarTabla }) => {
   const borrarHabitacion = () => {
     Swal.fire({
-      title: "Esta seguro?",
+      title: "¿Está seguro?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, Eliminalo!",
-      cancelButtonText: "No, Cancelar!",
+      confirmButtonText: "Sí, Eliminarlo",
+      cancelButtonText: "No, Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
         const respuesta = await eliminarHabitacion(habitacion.id);
         if (respuesta.status === 200) {
           Swal.fire({
-            title: "Habitacion Eliminada!",
-            text: `La habitacion ${habitacion.id} fue eliminada con exito`,
+            title: "Habitación Eliminada",
+            text: `La habitación ${habitacion.id} fue eliminada con éxito`,
             icon: "success",
           });
-          //actualiza la tabla del administrador
-          const respuestaHabitaciones = await leerHabitacion()
-          if(respuestaHabitaciones.status === 200){
-            const habitacionesActualizadas = await respuestaHabitaciones.json()
-            actualizarTabla(habitacionesActualizadas)
-          }
-        }else{
+          window.location.reload();
+        } else {
           Swal.fire({
-            title: "Ocurrio un error",
-            text: `La habitacion ${habitacion.id} no pudo eliminarse, intente nuevamente mas tarde.`,
+            title: "Ocurrió un error",
+            text: `La habitación ${habitacion.id} no pudo eliminarse, intente nuevamente más tarde.`,
             icon: "error",
-          })
+          });
         }
       }
     });
@@ -55,6 +50,11 @@ const ItemHabitacion = ({ habitacion, fila, actualizarTabla }) => {
       </td>
       <td className="text-center align-content-center">
         ${habitacion.precioPorNoche}
+      </td>
+      <td className="text-center align-content-center">
+        <Badge bg={habitacion.reserva ? "danger" : "success"}>
+          {habitacion.reserva ? "Ocupada" : "Disponible"}
+        </Badge>
       </td>
       <td className="text-center">
         <Link
