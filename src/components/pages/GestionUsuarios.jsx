@@ -144,7 +144,7 @@ const GestionUsuarios = () => {
       });
     }
   };
-
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem('NeoCityHotel')) || null;
   if (loading) {
     return (
       <Container className="flex-grow-1 d-flex align-items-center justify-content-center">
@@ -221,15 +221,17 @@ const GestionUsuarios = () => {
                     </td>
                     <td>
                       <div className="d-flex flex-column flex-sm-row gap-1 justify-content-center">
-                        <Button
-                          variant="outline-primary"
-                          size="sm"
-                          onClick={() => abrirModalEditar(usuario)}
-                          title="Editar usuario"
-                        >
-                          <i className="bi bi-pencil"></i>
-                          <span className="d-none d-lg-inline ms-1">Editar</span>
-                        </Button>
+                        {usuarioLogueado?.esAdmin && (
+                          <Button
+                            variant="outline-primary"
+                            size="sm"
+                            onClick={() => abrirModalEditar(usuario)}
+                            title="Editar usuario"
+                          >
+                            <i className="bi bi-pencil"></i>
+                            <span className="d-none d-lg-inline ms-1">Editar</span>
+                          </Button>
+                        )}
                         
                         {!usuario.esAdmin && (
                           <>
@@ -237,6 +239,7 @@ const GestionUsuarios = () => {
                               variant={usuario.cuentaSuspendida ? "success" : "warning"}
                               size="sm"
                               onClick={() => cambiarEstadoUsuario(usuario.id, !usuario.cuentaSuspendida)}
+                              title={usuario.cuentaSuspendida ? "Activar usuario" : "Suspender usuario"}
                             >
                               <i className={`bi ${usuario.cuentaSuspendida ? 'bi-check-circle' : 'bi-pause-circle'}`}></i>
                               <span className="d-none d-lg-inline ms-1">
@@ -248,6 +251,7 @@ const GestionUsuarios = () => {
                               variant="danger"
                               size="sm"
                               onClick={() => eliminarUsuarioPorId(usuario.id, usuario.nombreUsuario)}
+                              title="Eliminar usuario"
                             >
                               <i className="bi bi-trash"></i>
                               <span className="d-none d-lg-inline ms-1">Eliminar</span>
@@ -290,9 +294,7 @@ const GestionUsuarios = () => {
           </div>
         )}
       </Container>
-
-      {/* Modal para editar usuario */}
-      <Modal show={mostrarModalEditar} onHide={cerrarModalEditar} centered>
+      <Modal show={mostrarModalEditar} onHide={cerrarModalEditar} centered size="md">
         <Modal.Header closeButton>
           <Modal.Title>
             <i className="bi bi-pencil-square me-2"></i>
