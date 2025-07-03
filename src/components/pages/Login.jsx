@@ -47,77 +47,79 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <Container className="flex-grow-1 align-content-center w-25">
-      <Card className="my-5 detalle-card">
-        <Card.Header as="h5" className="text-center fw-bold">
-          Inicio de Sesion
-        </Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Ingrese el email"
-                {...register("email", {
-                  required: "El email es obligatorio",
-                  pattern: {
-                    value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message:
-                      "Ingrese una dirección de correo electrónico válida",
-                  },
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.email?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Contraseña</Form.Label>
-              <InputGroup>
+    <Container className="flex-grow-1 d-flex align-items-center justify-content-center py-4">
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Card className="detalle-card">
+          <Card.Header as="h5" className="text-center fw-bold">
+            Inicio de Sesion
+          </Card.Header>
+          <Card.Body>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
                 <Form.Control
-                  type={mostrarPassword ? "text" : "password"}
-                  placeholder="Contraseña"
-                  {...register("password", {
-                    required: "La contraseña es obligatoria",
+                  type="email"
+                  placeholder="Ingrese el email"
+                  {...register("email", {
+                    required: "El email es obligatorio",
                     pattern: {
-                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                      value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message:
-                        "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                        "Ingrese una dirección de correo electrónico válida",
                     },
                   })}
                 />
-                <Button
-                  variant="outline-secondary"
-                  onClick={togglePasswordVisibility}
-                  type="button"
-                >
-                  <i
-                    className={
-                      mostrarPassword ? "bi bi-eye-slash" : "bi bi-eye"
-                    }
-                  ></i>
+                <Form.Text className="text-danger">
+                  {errors.email?.message}
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Contraseña</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    type={mostrarPassword ? "text" : "password"}
+                    placeholder="Contraseña"
+                    {...register("password", {
+                      required: "La contraseña es obligatoria",
+                      pattern: {
+                        value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                        message:
+                          "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                      },
+                    })}
+                  />
+                  <Button
+                    variant="outline-secondary"
+                    onClick={togglePasswordVisibility}
+                    type="button"
+                  >
+                    <i
+                      className={
+                        mostrarPassword ? "bi bi-eye-slash" : "bi bi-eye"
+                      }
+                    ></i>
+                  </Button>
+                </InputGroup>
+                <Form.Text className="text-danger">
+                  {errors.password?.message}
+                </Form.Text>
+              </Form.Group>
+              <div className="d-flex flex-column flex-sm-row gap-2 justify-content-between">
+                <Button variant="primary" type="submit" className="flex-fill">
+                  Ingresar
                 </Button>
-              </InputGroup>
-              <Form.Text className="text-danger">
-                {errors.password?.message}
-              </Form.Text>
-            </Form.Group>
-            <div className="d-flex justify-content-between">
-              <Button variant="primary" type="submit">
-                Ingresar
-              </Button>
-              <NavLink
-                to="/Registrarme"
-                variant="warning"
-                className="btn btn-warning"
-              >
-                Registrarme
-              </NavLink>
-            </div>
-          </Form>
-        </Card.Body>
-      </Card>
+                <NavLink
+                  to="/Registrarme"
+                  variant="warning"
+                  className="btn btn-warning flex-fill text-center"
+                >
+                  Registrarme
+                </NavLink>
+              </div>
+            </Form>
+          </Card.Body>
+        </Card>
+      </div>
     </Container>
   );
 };

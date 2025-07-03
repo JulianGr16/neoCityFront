@@ -23,12 +23,12 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
         data-bs-theme="dark"
         className="py-2 barra-navegacion"
       >
-        <Navbar.Brand as={Link} to="/" className="fs-3 ms-5">
+        <Navbar.Brand as={Link} to="/" className="fs-3 ms-2 ms-lg-5">
           <i className="bi bi-buildings"></i> NeoCity
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="">
+          <Nav className="me-auto">
             <NavLink end to="/" className="nav-link">
               Inicio
             </NavLink>
@@ -50,21 +50,29 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
               </NavLink>
             )}
           </Nav>
-          <Nav className="ms-auto me-5 align-items-center">
+          <Nav className="ms-auto me-2 me-lg-5">
             {usuarioLogueado !== "" && !usuarioLogueado?.esAdmin && (
-              <NavLink className="btn btn-outline-light me-2" end to="/mis-reservas">
+              <NavLink
+                className="btn btn-outline-light me-2 mb-2 mb-lg-0"
+                end
+                to="/mis-reservas"
+              >
                 <i className="bi bi-calendar-check me-1"></i>
-                Mis Reservas
+                <span className="d-none d-sm-inline">Mis Reservas</span>
+                <span className="d-sm-none">Reservas</span>
               </NavLink>
             )}
             {usuarioLogueado !== "" ? (
-              <Button variant="danger" onClick={logout}>
-                Cerrar Sesion
+              <Button variant="danger" onClick={logout} className="w-auto">
+                <i className="bi bi-box-arrow-right me-1 d-lg-none"></i>
+                <span className="d-none d-lg-inline">Cerrar Sesión</span>
+                <span className="d-lg-none">Salir</span>
               </Button>
             ) : (
               <NavLink className="btn btn-light" end to="/login">
                 <i className="bi bi-person me-1"></i>
-                Iniciar Sesión
+                <span className="d-none d-sm-inline">Iniciar Sesión</span>
+                <span className="d-sm-none">Login</span>
               </NavLink>
             )}
           </Nav>
@@ -73,6 +81,5 @@ const Nab = ({ usuarioLogueado, setUsuarioLogueado }) => {
     </>
   );
 };
-
 
 export default Nab;
