@@ -241,7 +241,10 @@ export const editarUsuario = async (usuarioEditado, id) => {
     return respuesta;
   } catch (error) {
     console.error(error);
-    return false;
+    return {
+      status: 500,
+      json: () => Promise.resolve({ mensaje: "Error de conexión con el servidor" })
+    };
   }
 };
 

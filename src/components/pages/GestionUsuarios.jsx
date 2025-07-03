@@ -185,16 +185,131 @@ const GestionUsuarios = () => {
                           <i className="bi bi-trash"></i>
                           <span className="d-none d-lg-inline ms-1">Eliminar</span>
                         </Button>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      )}
-    </Container>
+                        {!usuario.esAdmin && (
+                          <>
+                            <Button
+                              variant={usuario.cuentaSuspendida ? "outline-success" : "outline-warning"}
+                              size="sm"
+                              onClick={() => cambiarEstadoCuenta(usuario)}
+                              title={usuario.cuentaSuspendida ? "Activar cuenta" : "Suspender cuenta"}
+                            >
+                              <i className={`bi ${usuario.cuentaSuspendida ? "bi-check-circle" : "bi-pause-circle"}`}></i>
+                            </Button>
+                            
+                            <Button
+                              variant="outline-danger"
+                              size="sm"
+                              onClick={() => eliminarUsuarioConfirmar(usuario)}
+                              title="Eliminar usuario"
+                            >
+                              <i className="bi bi-trash"></i>
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            <div className="mt-4 p-3 bg-light rounded">
+              <div className="row text-center">
+                <div className="col-md-3">
+                  <h5 className="text-primary">{usuarios.length}</h5>
+                  <small className="text-muted">Total de Usuarios</small>
+                </div>
+                <div className="col-md-3">
+                  <h5 className="text-success">
+                    {usuarios.filter(u => !u.esAdmin && !u.cuentaSuspendida).length}
+                  </h5>
+                  <small className="text-muted">Usuarios Activos</small>
+                </div>
+                <div className="col-md-3">
+                  <h5 className="text-warning">
+                    {usuarios.filter(u => u.cuentaSuspendida).length}
+                  </h5>
+                  <small className="text-muted">Usuarios Suspendidos</small>
+                </div>
+                <div className="col-md-3">
+                  <h5 className="text-info">
+                    {usuarios.filter(u => u.esAdmin).length}
+                  </h5>
+                  <small className="text-muted">Administradores</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Container>
+      <Modal show={mostrarModalEditar} onHide={cerrarModalEditar} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <i className="bi bi-pencil-square me-2"></i>
+            Editar Usuario
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {usuarioEditando && (
+            <Form onSubmit={handleSubmit(onSubmitEditar)}>
+              <Form.Group className="mb-3">
+                <Form.Label>Nombre de Usuario *</Form.Label>
+                <Form.Control
+                  type="text"
+                  {...register("nombreUsuario", {
+                    required: "El nombre de usuario es obligatorio",
+                    minLength: {
+                      value: 4,
+                      message: "Mínimo 4 caracteres"
+                    },
+                    maxLength: {
+                      value: 16,
+                      message: "Máximo 16 caracteres"
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z0-9_-]+$/,
+                      message: "Solo se permiten letras, números, guiones y guiones bajos"
+                    }
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.nombreUsuario?.message}
+                </Form.Text>
+                <Form.Text className="text-muted">
+                  <small>Solo letras, números, guiones (-) y guiones bajos (_)</small>
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Email *</Form.Label>
+                <Form.Control
+                  type="email"
+                  {...register("email", {
+                    required: "El email es obligatorio",
+                    pattern: {
+                      value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: "Ingrese un email válido"
+                    }
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.email?.message}
+                </Form.Text>
+              </Form.Group>
+
+              <div className="d-flex justify-content-end gap-2">
+                <Button variant="secondary" onClick={cerrarModalEditar}>
+                  Cancelar
+                </Button>
+                <Button variant="primary" type="submit">
+                  <i className="bi bi-check-circle me-1"></i>
+                  Guardar Cambios
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 
