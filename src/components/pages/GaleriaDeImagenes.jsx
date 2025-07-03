@@ -1,4 +1,4 @@
-import "../Styles/componentespages.css";
+import "../Styles/componentesPages.css";
 
 const GaleriaDeImagenes = () => {
   return (
