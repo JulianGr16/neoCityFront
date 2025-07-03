@@ -1,0 +1,76 @@
+{
+  "habitaciones": [
+    {
+      "tipo": "Suite Premium",
+      "capacidad": "4",
+      "precioPorNoche": "20000",
+      "fecha": "2025-06-30",
+      "imagen": "https://beltafrajumar.com/wp-content/uploads/2024/03/Como-decorar-una-habitacion-de-un-hotel.jpg",
+      "id": 1
+    },
+    {
+      "tipo": "Suite Junior",
+      "capacidad": "2",
+      "precioPorNoche": "12000",
+      "fecha": "2025-06-30",
+      "imagen": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/12/19/1516/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.jpg/Hyatt-Centric-Levent-Istanbul-P028-Suite-King-Bedroom.16x9.jpg",
+      "id": 2
+    },
+    {
+      "tipo": "Suite Premium",
+      "capacidad": "2",
+      "precioPorNoche": "20000",
+      "fecha": "2025-06-30",
+      "imagen": "https://img.freepik.com/foto-gratis/suite-dormitorio-moderno-lujo-renderizado-3d-hotel-tv-gabinete_105762-2276.jpg?semt=ais_hybrid&w=740",
+      "id": 3
+    },
+    {
+      "tipo": "Suite",
+      "capacidad": "4",
+      "precioPorNoche": "10000",
+      "fecha": "2025-06-30",
+      "imagen": "https://www.principado.com.ar/assets/cache/uploads/fotos-principados-2022/1920x1080/interior-habitacion-cama-vista-frontal-principado-downtown-buenos-aires-hotel-argentina.jpg",
+      "id": 4
+    }
+  ],
+  "usuarios": [
+    {
+      "email": "Francopereyra325@gmail.com",
+      "nombreUsuario": "asdasd",
+      "password": "Fp123456",
+      "id": 1
+    },
+    {
+      "email": "admin12@gmail.com",
+      "nombreUsuario": "franco",
+      "password": "Fp123456",
+      "id": 2
+    }
+  ],
+  "reservas": [
+    {
+      "usuarioId": 1,
+      "habitacionId": 1,
+      "fechaReserva": "2025-06-30",
+      "fechaCheckIn": "2025-07-03",
+      "fechaCheckOut": "2025-07-07",
+      "cantidadPersonas": 2,
+      "cantidadNoches": 4,
+      "precioTotal": 80000,
+      "estado": "confirmada",
+      "id": 5
+    },
+    {
+      "usuarioId": 1,
+      "habitacionId": 1,
+      "fechaReserva": "2025-06-30",
+      "fechaCheckIn": "2025-07-01",
+      "fechaCheckOut": "2025-07-07",
+      "cantidadPersonas": 2,
+      "cantidadNoches": 6,
+      "precioTotal": 120000,
+      "estado": "confirmada",
+      "id": 6
+    }
+  ]
+}

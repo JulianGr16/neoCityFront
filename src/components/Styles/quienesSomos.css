@@ -1,0 +1,125 @@
+/* Estilos generales del contenedor */
+.quienes-somos-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Títulos y texto */
+.title {
+  color: #0d6efd;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.content-wrapper {
+  padding: 0 1.5rem;
+}
+
+.text-content {
+  background-color: rgba(248, 249, 250, 0.7);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.lead-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.last-paragraph {
+  margin-bottom: 0;
+}
+
+.welcome-message {
+  color: #0d6efd;
+  text-align: center;
+  margin: 2.5rem 0;
+  font-style: italic;
+}
+
+/* Tarjetas de perfil */
+.cards-row {
+  margin-top: 1.5rem;
+}
+
+.profile-card {
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-container {
+  height: 300px;
+  overflow: hidden;
+}
+
+.card-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-body {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  color: #0d6efd;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.contact-button {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.375rem 1.5rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0;
+  }
+  
+  .text-content {
+    padding: 1rem;
+  }
+  
+  .card-img-container {
+    height: 250px;
+  }
+}

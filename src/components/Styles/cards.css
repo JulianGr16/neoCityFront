@@ -1,0 +1,43 @@
+.card-habitaciones {
+  background-image: url(../../assets/habitacion.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: rgb(79, 68, 23) 1px 0 10px;
+  cursor: default;
+}
+
+.card-habitaciones:hover {
+  transition: 350ms;
+  background-color: black;
+  font-weight: bolder;
+}
+
+.card-restaurante {
+  background-image: url(../../assets/restaurante.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 1px 2px 5px 1px black;
+  text-shadow: rgb(79, 68, 23) 1px 0 10px;
+  cursor: default;
+}
+
+.card-restaurante:hover {
+  transition: 350ms;
+  background-color: black;
+  font-weight: bolder;
+}
+
+.card-vistas {
+  background-image: url(../../assets/vistas.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 1px 2px 5px 1px black;
+  text-shadow: rgb(27, 27, 27) 1px 0 10px;
+  cursor: default;
+}
+
+.card-vistas:hover {
+  transition: 350ms;
+  background-color: black;
+  font-weight: bolder;
+}

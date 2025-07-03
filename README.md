@@ -1,12 +1,68 @@
-# React + Vite
+# 🏨 NeoCity-Hotel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**NeoCity-Hotel** es una aplicación web desarrollada con **React** que ofrece una experiencia clara, visual e intuitiva para reservar habitaciones de hotel desde cualquier parte del país o del mundo. Cada habitación cuenta con un precio por noche, características específicas y disponibilidad actualizada.
 
-Currently, two official plugins are available:
+Buscamos brindar una interfaz amigable tanto para el usuario como para el administrador del sistema.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- HTML / CSS
+- JavaScript
+- React (librería principal)
+- React-Bootstrap
+- React Router DOM
+- JSON Server (entorno de desarrollo)
+- MongoDB Atlas (base de datos remota)
+- Herramientas de despliegue (Netlify)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Funcionalidades
+
+- Visualización de habitaciones disponibles.
+- Reserva de habitaciones por parte del usuario.
+- Panel de administración para crear, editar o eliminar habitaciones.
+- Conexión a base de datos en la nube (MongoDB Atlas).
+- Mock de datos local para testing con `json-server`.
+
+## 📦 Instalación y uso
+
+### 1. Clonar el repositorio
+
+git clone https://github.com/JulianGr16/neoCityFront.git
+cd neoCityFront
+
+### 2. Instalar dependencias
+
+npm install
+
+### 3. Iniciar el servidor local y la app
+Terminal 1:
+
+json-server --watch db.json --port 3001
+
+Terminal 2:
+
+npm run dev
+
+#### ⚠️ Asegurate de tener Node.js y json-server instalados globalmente (npm install -g json-server).
+
+### 🌐 Conexión con MongoDB
+Este proyecto utiliza MongoDB Atlas como base de datos principal. Se recomienda definir las variables de entorno necesarias en un archivo .env si se conecta a un backend propio.
+
+## 📁 Estructura del proyecto
+
+```bash
+neoCityFront/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── helpers/
+│   └── App.jsx
+├── db.json
+└── README.md
+```
+
+# ✨ Autores
++ JulianGr16
+
++ FrancoPereyra2
