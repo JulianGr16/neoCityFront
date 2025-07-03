@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Badge, Alert, Table, Button } from "react-bootstrap";
 import { leerReservas, obtenerHabitacion } from "../../helpers/queries";
 import { useNavigate } from "react-router-dom";
+import { obtenerUsuario } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import "../../App.css";
 
@@ -38,7 +39,7 @@ const GestionReservas = () => {
 
           if (!usuariosData[reserva.usuarioId]) {
             try {
-              const respuestaUsuario = await fetch(`http://localhost:3001/api/usuarios/${reserva.usuarioId}`);
+              const respuestaUsuario = await obtenerUsuario(reserva.usuarioId);
               if (respuestaUsuario.status === 200) {
                 const usuarioData = await respuestaUsuario.json();
                 usuariosData[reserva.usuarioId] = usuarioData;
