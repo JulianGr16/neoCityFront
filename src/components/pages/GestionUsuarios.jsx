@@ -11,6 +11,14 @@ const GestionUsuarios = () => {
 
   const navegacion = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue
+  } = useForm();
+
   useEffect(() => {
     cargarUsuarios();
   }, []);
@@ -103,106 +111,98 @@ const GestionUsuarios = () => {
   }
 
   return (
-    <Container fluid className="mainAdmin py-4">
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-            <h1 className="text-center mb-0">
-              <i className="bi bi-people me-2"></i>
-              Gestión de Usuarios
-            </h1>
-            <Button 
-              variant="secondary"
-              onClick={() => navegacion("/administrador")}
-              className="w-auto"
-            >
-              <i className="bi bi-arrow-left me-1"></i>
-              Volver al Admin
-            </Button>
+    <>
+      <Container fluid className="mainAdmin py-4">
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+              <h1 className="text-center mb-0">
+                <i className="bi bi-people me-2"></i>
+                Gestión de Usuarios
+              </h1>
+              <Button 
+                variant="secondary"
+                onClick={() => navegacion("/administrador")}
+                className="w-auto"
+              >
+                <i className="bi bi-arrow-left me-1"></i>
+                Volver al Admin
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {usuarios.length === 0 ? (
-        <Alert variant="info" className="text-center">
-          <Alert.Heading>No hay usuarios registrados</Alert.Heading>
-          <p>Aún no se han registrado usuarios en el sistema.</p>
-        </Alert>
-      ) : (
-        <div className="table-responsive">
-          <Table striped bordered hover>
-            <thead className="table-dark">
-              <tr className="text-center">
-                <th>#</th>
-                <th>Nombre Usuario</th>
-                <th className="d-none d-md-table-cell">Email</th>
-                <th>Tipo</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {usuarios.map((usuario, index) => (
-                <tr key={usuario.id} className="text-center align-middle">
-                  <td><strong>{index + 1}</strong></td>
-                  <td className="text-start">
-                    <div className="fw-bold">{usuario.nombreUsuario}</div>
-                    <small className="text-muted d-md-none">{usuario.email}</small>
-                  </td>
-                  <td className="d-none d-md-table-cell text-start">
-                    <small>{usuario.email}</small>
-                  </td>
-                  <td>
-                    <Badge bg={usuario.esAdmin ? "warning" : "primary"}>
-                      {usuario.esAdmin ? "Admin" : "Usuario"}
-                    </Badge>
-                  </td>
-                  <td>
-                    <Badge bg={usuario.cuentaSuspendida ? "danger" : "success"}>
-                      {usuario.cuentaSuspendida ? "Suspendido" : "Activo"}
-                    </Badge>
-                  </td>
-                  <td>
-                    <div className="d-flex flex-column flex-sm-row gap-1 justify-content-center">
-                      {!usuario.esAdmin && (
+        {usuarios.length === 0 ? (
+          <Alert variant="info" className="text-center">
+            <Alert.Heading>No hay usuarios registrados</Alert.Heading>
+            <p>Aún no se han registrado usuarios en el sistema.</p>
+          </Alert>
+        ) : (
+          <div className="table-responsive">
+            <Table striped bordered hover>
+              <thead className="table-dark">
+                <tr className="text-center">
+                  <th>#</th>
+                  <th>Nombre Usuario</th>
+                  <th className="d-none d-md-table-cell">Email</th>
+                  <th>Tipo</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {usuarios.map((usuario, index) => (
+                  <tr key={usuario.id} className="text-center align-middle">
+                    <td><strong>{index + 1}</strong></td>
+                    <td className="text-start">
+                      <div className="fw-bold">{usuario.nombreUsuario}</div>
+                      <small className="text-muted d-md-none">{usuario.email}</small>
+                    </td>
+                    <td className="d-none d-md-table-cell text-start">
+                      <small>{usuario.email}</small>
+                    </td>
+                    <td>
+                      <Badge bg={usuario.esAdmin ? "warning" : "primary"}>
+                        {usuario.esAdmin ? "Admin" : "Usuario"}
+                      </Badge>
+                    </td>
+                    <td>
+                      <Badge bg={usuario.cuentaSuspendida ? "danger" : "success"}>
+                        {usuario.cuentaSuspendida ? "Suspendido" : "Activo"}
+                      </Badge>
+                    </td>
+                    <td>
+                      <div className="d-flex flex-column flex-sm-row gap-1 justify-content-center">
                         <Button
-                          variant={usuario.cuentaSuspendida ? "success" : "warning"}
+                          variant="outline-primary"
                           size="sm"
-                          onClick={() => cambiarEstadoUsuario(usuario.id, !usuario.cuentaSuspendida)}
+                          onClick={() => abrirModalEditar(usuario)}
+                          title="Editar usuario"
                         >
-                          <i className={`bi ${usuario.cuentaSuspendida ? 'bi-check-circle' : 'bi-pause-circle'}`}></i>
-                          <span className="d-none d-lg-inline ms-1">
-                            {usuario.cuentaSuspendida ? "Activar" : "Suspender"}
-                          </span>
+                          <i className="bi bi-pencil"></i>
+                          <span className="d-none d-lg-inline ms-1">Editar</span>
                         </Button>
-                      )}
-                      {!usuario.esAdmin && (
-                        <Button
-                          variant="danger"
-                          size="sm"
-                          onClick={() => eliminarUsuarioPorId(usuario.id, usuario.nombreUsuario)}
-                        >
-                          <i className="bi bi-trash"></i>
-                          <span className="d-none d-lg-inline ms-1">Eliminar</span>
-                        </Button>
+                        
                         {!usuario.esAdmin && (
                           <>
                             <Button
-                              variant={usuario.cuentaSuspendida ? "outline-success" : "outline-warning"}
+                              variant={usuario.cuentaSuspendida ? "success" : "warning"}
                               size="sm"
-                              onClick={() => cambiarEstadoCuenta(usuario)}
-                              title={usuario.cuentaSuspendida ? "Activar cuenta" : "Suspender cuenta"}
+                              onClick={() => cambiarEstadoUsuario(usuario.id, !usuario.cuentaSuspendida)}
                             >
-                              <i className={`bi ${usuario.cuentaSuspendida ? "bi-check-circle" : "bi-pause-circle"}`}></i>
+                              <i className={`bi ${usuario.cuentaSuspendida ? 'bi-check-circle' : 'bi-pause-circle'}`}></i>
+                              <span className="d-none d-lg-inline ms-1">
+                                {usuario.cuentaSuspendida ? "Activar" : "Suspender"}
+                              </span>
                             </Button>
                             
                             <Button
-                              variant="outline-danger"
+                              variant="danger"
                               size="sm"
-                              onClick={() => eliminarUsuarioConfirmar(usuario)}
-                              title="Eliminar usuario"
+                              onClick={() => eliminarUsuarioPorId(usuario.id, usuario.nombreUsuario)}
                             >
                               <i className="bi bi-trash"></i>
+                              <span className="d-none d-lg-inline ms-1">Eliminar</span>
                             </Button>
                           </>
                         )}
@@ -212,6 +212,7 @@ const GestionUsuarios = () => {
                 ))}
               </tbody>
             </Table>
+            
             <div className="mt-4 p-3 bg-light rounded">
               <div className="row text-center">
                 <div className="col-md-3">
@@ -241,6 +242,8 @@ const GestionUsuarios = () => {
           </div>
         )}
       </Container>
+
+      {/* Modal para editar usuario */}
       <Modal show={mostrarModalEditar} onHide={cerrarModalEditar} centered>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -248,6 +251,7 @@ const GestionUsuarios = () => {
             Editar Usuario
           </Modal.Title>
         </Modal.Header>
+        
         <Modal.Body>
           {usuarioEditando && (
             <Form onSubmit={handleSubmit(onSubmitEditar)}>
@@ -295,6 +299,7 @@ const GestionUsuarios = () => {
                   {errors.email?.message}
                 </Form.Text>
               </Form.Group>
+
               <div className="d-flex justify-content-end gap-2">
                 <Button variant="secondary" onClick={cerrarModalEditar}>
                   Cancelar
