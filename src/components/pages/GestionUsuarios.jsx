@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Container, Table, Badge, Alert, Button } from "react-bootstrap";
-import { listarUsuarios, cambiarEstadoCuentaUsuario, eliminarUsuario } from "../../helpers/queries";
+import { Container, Table, Badge, Alert, Button, Modal, Form } from "react-bootstrap";
+import { listarUsuarios, cambiarEstadoCuentaUsuario, eliminarUsuario, editarUsuario } from "../../helpers/queries";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import "../../App.css";
 
 const GestionUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mostrarModalEditar, setMostrarModalEditar] = useState(false);
+  const [usuarioEditando, setUsuarioEditando] = useState(null);
 
   const navegacion = useNavigate();
 
@@ -95,6 +98,51 @@ const GestionUsuarios = () => {
         }
       }
     });
+  };
+
+  const abrirModalEditar = (usuario) => {
+    setUsuarioEditando(usuario);
+    setValue("nombreUsuario", usuario.nombreUsuario);
+    setValue("email", usuario.email);
+    setMostrarModalEditar(true);
+  };
+
+  const cerrarModalEditar = () => {
+    setMostrarModalEditar(false);
+    setUsuarioEditando(null);
+    reset();
+  };
+
+  const onSubmitEditar = async (data) => {
+    try {
+      const usuarioActualizado = {
+        ...usuarioEditando,
+        nombreUsuario: data.nombreUsuario,
+        email: data.email
+      };
+
+      const respuesta = await editarUsuario(usuarioActualizado, usuarioEditando.id);
+      
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Usuario actualizado",
+          text: "Los datos del usuario han sido actualizados correctamente.",
+          icon: "success",
+        });
+        cerrarModalEditar();
+        cargarUsuarios();
+      } else {
+        const errorData = await respuesta.json();
+        throw new Error(errorData.mensaje || "Error al actualizar usuario");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      Swal.fire({
+        title: "Error",
+        text: error.message || "No se pudo actualizar el usuario. Intenta nuevamente más tarde.",
+        icon: "error",
+      });
+    }
   };
 
   if (loading) {
