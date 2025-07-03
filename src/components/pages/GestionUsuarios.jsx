@@ -350,11 +350,18 @@ const GestionUsuarios = () => {
                     maxLength: {
                       value: 16,
                       message: "Máximo 16 caracteres"
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z0-9_-]+$/,
+                      message: "Solo se permiten letras, números, guiones y guiones bajos"
                     }
                   })}
                 />
                 <Form.Text className="text-danger">
                   {errors.nombreUsuario?.message}
+                </Form.Text>
+                <Form.Text className="text-muted">
+                  <small>Solo letras, números, guiones (-) y guiones bajos (_)</small>
                 </Form.Text>
               </Form.Group>
 
