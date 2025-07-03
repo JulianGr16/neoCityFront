@@ -206,11 +206,16 @@ export const eliminarReserva = async (id) => {
 
 export const obtenerUsuario = async (id) => {
   try {
-    const respuesta = await fetch(`${URLUsuarios}/${id}`);
+    const respuesta = await fetch(`${URLUsuarios}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return respuesta;
   } catch (error) {
-    console.error(error);
-    return false;
+    console.error("Error en obtenerUsuario:", error);
+    throw error;
   }
 };
 

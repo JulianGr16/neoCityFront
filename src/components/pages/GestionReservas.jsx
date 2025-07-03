@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Badge, Alert, Table, Button } from "react-bootstrap";
 import { leerReservas, obtenerHabitacion } from "../../helpers/queries";
 import { useNavigate } from "react-router-dom";
+import { obtenerUsuario } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import "../../App.css";
 
@@ -38,7 +39,7 @@ const GestionReservas = () => {
 
           if (!usuariosData[reserva.usuarioId]) {
             try {
-              const respuestaUsuario = await fetch(`http://localhost:3001/api/usuarios/${reserva.usuarioId}`);
+              const respuestaUsuario = await obtenerUsuario(reserva.usuarioId);
               if (respuestaUsuario.status === 200) {
                 const usuarioData = await respuestaUsuario.json();
                 usuariosData[reserva.usuarioId] = usuarioData;
@@ -100,19 +101,24 @@ const GestionReservas = () => {
   }
 
   return (
-    <Container className="mainAdmin py-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1 className="text-center flex-grow-1 mb-0">
-          <i className="bi bi-calendar-check me-2"></i>
-          Gestión de Reservas
-        </h1>
-        <Button 
-          variant="secondary"
-          onClick={() => navegacion("/administrador")}
-        >
-          <i className="bi bi-arrow-left me-1"></i>
-          Volver al Admin
-        </Button>
+    <Container fluid className="mainAdmin py-4">
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <h1 className="text-center mb-0">
+              <i className="bi bi-calendar-check me-2"></i>
+              Gestión de Reservas
+            </h1>
+            <Button 
+              variant="secondary"
+              onClick={() => navegacion("/administrador")}
+              className="w-auto"
+            >
+              <i className="bi bi-arrow-left me-1"></i>
+              Volver al Admin
+            </Button>
+          </div>
+        </div>
       </div>
       
       {reservas.length === 0 ? (
@@ -121,100 +127,104 @@ const GestionReservas = () => {
           <p>Aún no se han realizado reservas en el sistema.</p>
         </Alert>
       ) : (
-        <div className="table-responsive">
-          <Table striped bordered hover>
-            <thead className="table-dark">
-              <tr className="text-center">
-                <th>#</th>
-                <th>Usuario</th>
-                <th>Habitación</th>
-                <th>Check-in</th>
-                <th>Check-out</th>
-                <th>Personas</th>
-                <th>Noches</th>
-                <th>Total</th>
-                <th>Estado</th>
-                <th>Fecha Reserva</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservas.map((reserva, index) => {
-                const habitacion = habitaciones[reserva.habitacionId];
-                const usuario = usuarios[reserva.usuarioId];
-                
-                return (
-                  <tr key={reserva.id} className="text-center align-middle">
-                    <td><strong>{index + 1}</strong></td>
-                    <td>
-                      <div>
-                        <strong>{usuario?.nombreUsuario || 'Cargando...'}</strong>
-                        <br />
-                        <small className="text-muted">{usuario?.email || ''}</small>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <strong>{habitacion?.tipo || 'Cargando...'}</strong>
-                        <br />
+        <>
+          <div className="table-responsive">
+            <Table striped bordered hover>
+              <thead className="table-dark">
+                <tr className="text-center">
+                  <th>#</th>
+                  <th>Usuario</th>
+                  <th className="d-none d-md-table-cell">Habitación</th>
+                  <th className="d-md-none">Hab.</th>
+                  <th>Check-in</th>
+                  <th>Check-out</th>
+                  <th className="d-none d-lg-table-cell">Personas</th>
+                  <th className="d-lg-none">Pers.</th>
+                  <th className="d-none d-lg-table-cell">Noches</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th className="d-none d-md-table-cell">Fecha Reserva</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reservas.map((reserva, index) => {
+                  const habitacion = habitaciones[reserva.habitacionId];
+                  const usuario = usuarios[reserva.usuarioId];
+                  
+                  return (
+                    <tr key={reserva.id} className="text-center align-middle">
+                      <td><strong>{index + 1}</strong></td>
+                      <td>
+                        <div className="text-start">
+                          <div className="fw-bold">{usuario?.nombreUsuario || 'Cargando...'}</div>
+                          <small className="text-muted d-none d-md-block">{usuario?.email || ''}</small>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-start">
+                          <div className="fw-bold">{habitacion?.tipo || 'Cargando...'}</div>
+                          <small className="text-muted d-none d-md-block">
+                            Capacidad: {habitacion?.capacidad || 0} personas
+                          </small>
+                        </div>
+                      </td>
+                      <td><small>{formatearFecha(reserva.fechaCheckIn)}</small></td>
+                      <td><small>{formatearFecha(reserva.fechaCheckOut)}</small></td>
+                      <td>
+                        <i className="bi bi-people me-1 d-none d-lg-inline"></i>
+                        {reserva.cantidadPersonas}
+                      </td>
+                      <td className="d-none d-lg-table-cell">
+                        <i className="bi bi-moon me-1"></i>
+                        {reserva.cantidadNoches}
+                      </td>
+                      <td>
+                        <strong className="text-success">
+                          <small className="d-md-none">$</small>
+                          <span className="d-none d-md-inline">$</span>
+                          {reserva.precioTotal.toLocaleString()}
+                        </strong>
+                      </td>
+                      <td>{getEstadoBadge(reserva.estado)}</td>
+                      <td className="d-none d-md-table-cell">
                         <small className="text-muted">
-                          Capacidad: {habitacion?.capacidad || 0} personas
+                          {formatearFecha(reserva.fechaReserva)}
                         </small>
-                      </div>
-                    </td>
-                    <td>{formatearFecha(reserva.fechaCheckIn)}</td>
-                    <td>{formatearFecha(reserva.fechaCheckOut)}</td>
-                    <td>
-                      <i className="bi bi-people me-1"></i>
-                      {reserva.cantidadPersonas}
-                    </td>
-                    <td>
-                      <i className="bi bi-moon me-1"></i>
-                      {reserva.cantidadNoches}
-                    </td>
-                    <td>
-                      <strong className="text-success">
-                        ${reserva.precioTotal.toLocaleString()}
-                      </strong>
-                    </td>
-                    <td>{getEstadoBadge(reserva.estado)}</td>
-                    <td>
-                      <small className="text-muted">
-                        {formatearFecha(reserva.fechaReserva)}
-                      </small>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
           
           <div className="mt-4 p-3 bg-light rounded">
             <Row>
-              <Col md={3}>
+              <Col xs={6} md={3}>
                 <div className="text-center">
-                  <h5 className="text-primary">{reservas.length}</h5>
+                  <h5 className="text-primary mb-1">{reservas.length}</h5>
                   <small className="text-muted">Total Reservas</small>
                 </div>
               </Col>
-              <Col md={3}>
+              <Col xs={6} md={3}>
                 <div className="text-center">
-                  <h5 className="text-success">
+                  <h5 className="text-success mb-1">
                     {reservas.filter(r => r.estado === 'confirmada').length}
                   </h5>
                   <small className="text-muted">Confirmadas</small>
                 </div>
               </Col>
-              <Col md={3}>
+              <Col xs={6} md={3}>
                 <div className="text-center">
-                  <h5 className="text-warning">
+                  <h5 className="text-warning mb-1">
                     {reservas.filter(r => r.estado === 'pendiente').length}
                   </h5>
                   <small className="text-muted">Pendientes</small>
                 </div>
               </Col>
-              <Col md={3}>
+              <Col xs={6} md={3}>
                 <div className="text-center">
-                  <h5 className="text-success">
+                  <h5 className="text-success mb-1">
                     ${reservas.reduce((total, reserva) => total + reserva.precioTotal, 0).toLocaleString()}
                   </h5>
                   <small className="text-muted">Ingresos Totales</small>
@@ -222,7 +232,7 @@ const GestionReservas = () => {
               </Col>
             </Row>
           </div>
-        </div>
+        </>
       )}
     </Container>
   );
