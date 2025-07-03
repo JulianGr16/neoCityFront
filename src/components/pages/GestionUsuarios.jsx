@@ -294,7 +294,6 @@ const GestionUsuarios = () => {
                 ))}
               </tbody>
             </Table>
-            
             <div className="mt-4 p-3 bg-light rounded">
               <div className="row text-center">
                 <div className="col-md-3">
@@ -324,8 +323,6 @@ const GestionUsuarios = () => {
           </div>
         )}
       </Container>
-
-      {/* Modal para editar usuario */}
       <Modal show={mostrarModalEditar} onHide={cerrarModalEditar} centered>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -333,7 +330,6 @@ const GestionUsuarios = () => {
             Editar Usuario
           </Modal.Title>
         </Modal.Header>
-        
         <Modal.Body>
           {usuarioEditando && (
             <Form onSubmit={handleSubmit(onSubmitEditar)}>
@@ -381,7 +377,6 @@ const GestionUsuarios = () => {
                   {errors.email?.message}
                 </Form.Text>
               </Form.Group>
-
               <div className="d-flex justify-content-end gap-2">
                 <Button variant="secondary" onClick={cerrarModalEditar}>
                   Cancelar
