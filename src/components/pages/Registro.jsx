@@ -68,104 +68,107 @@ const Registro = () => {
   };
 
   return (
-    <Container className="flex-grow-1 align-content-center w-25">
-      <Card className="my-5 detalle-card">
-        <Card.Header as="h5" className="text-center fw-bold">
-          Registrarme
-        </Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3" controlId="formBasicText">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                onChange={handleChange}
-                placeholder="ejemplo123@gmail.com"
-                {...register("email", {
-                  required: "El email es obligatorio",
-                  pattern: {
-                    value:
-                      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message:
-                      "Ingrese una dirección de correo electrónico válida",
-                  },
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.email?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Nombre de Usuario</Form.Label>
-              <Form.Control
-                type="text"
-                name="nombreUsuario"
-                onChange={handleChange}
-                placeholder="Julio2025"
-                {...register("nombreUsuario", {
-                  required: "El nombre de usuario es un dato obligatorio",
-                  minLength: {
-                    value: 4,
-                    message: "el minimo son 4 caracter",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "el maximo son 16 caracter",
-                  },
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.nombreUsuario?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Contraseña</Form.Label>
-              <InputGroup>
+    <Container className="flex-grow-1 d-flex align-items-center justify-content-center py-4">
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Card className="detalle-card">
+          <Card.Header as="h5" className="text-center fw-bold">
+            Registrarme
+          </Card.Header>
+          <Card.Body>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form.Group className="mb-3" controlId="formBasicText">
+                <Form.Label>Email</Form.Label>
                 <Form.Control
-                  type={mostrarPassword ? "text" : "password"}
-                  name="password"
+                  type="email"
+                  name="email"
                   onChange={handleChange}
-                  placeholder="Luxo123"
-                  {...register("password", {
-                    required: "La contraseña es obligatoria",
+                  placeholder="ejemplo123@gmail.com"
+                  {...register("email", {
+                    required: "El email es obligatorio",
                     pattern: {
-                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                      value:
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message:
-                        "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                        "Ingrese una dirección de correo electrónico válida",
                     },
                   })}
                 />
-                <Button
-                  variant="outline-secondary"
-                  onClick={togglePasswordVisibility}
-                  type="button"
-                >
-                  <i
-                    className={
-                      mostrarPassword ? "bi bi-eye-slash" : "bi bi-eye"
-                    }
-                  ></i>
+                <Form.Text className="text-danger">
+                  {errors.email?.message}
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Nombre de Usuario</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="nombreUsuario"
+                  onChange={handleChange}
+                  placeholder="Julio2025"
+                  {...register("nombreUsuario", {
+                    required: "El nombre de usuario es un dato obligatorio",
+                    minLength: {
+                      value: 4,
+                      message: "el minimo son 4 caracter",
+                    },
+                    maxLength: {
+                      value: 16,
+                      message: "el maximo son 16 caracter",
+                    },
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.nombreUsuario?.message}
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Contraseña</Form.Label>
+                <InputGroup>
+                  <Form.Control
+                    type={mostrarPassword ? "text" : "password"}
+                    name="password"
+                    onChange={handleChange}
+                    placeholder="Luxo123"
+                    {...register("password", {
+                      required: "La contraseña es obligatoria",
+                      pattern: {
+                        value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                        message:
+                          "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                      },
+                    })}
+                  />
+                  <Button
+                    variant="outline-secondary"
+                    onClick={togglePasswordVisibility}
+                    type="button"
+                  >
+                    <i
+                      className={
+                        mostrarPassword ? "bi bi-eye-slash" : "bi bi-eye"
+                      }
+                    ></i>
+                  </Button>
+                </InputGroup>
+                <Form.Text className="text-danger">
+                  {errors.password?.message}
+                </Form.Text>
+              </Form.Group>
+              <div className="d-flex flex-column flex-sm-row gap-2 justify-content-between">
+                <Button variant="primary" type="submit" className="flex-fill">
+                  Registrarme
                 </Button>
-              </InputGroup>
-              <Form.Text className="text-danger">
-                {errors.password?.message}
-              </Form.Text>
-            </Form.Group>
-            <div className="d-flex justify-content-between">
-              <Button variant="primary" type="submit">
-                Registrarme
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => navegacion("/login")}
-              >
-                Volver al Login
-              </Button>
-            </div>
-          </Form>
-        </Card.Body>
-      </Card>
+                <Button
+                  variant="secondary"
+                  onClick={() => navegacion("/login")}
+                  className="flex-fill"
+                >
+                  Volver al Login
+                </Button>
+              </div>
+            </Form>
+          </Card.Body>
+        </Card>
+      </div>
     </Container>
   );
 };
