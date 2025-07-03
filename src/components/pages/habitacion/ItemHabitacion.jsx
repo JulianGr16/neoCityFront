@@ -41,31 +41,51 @@ const ItemHabitacion = ({ habitacion, fila, actualizarTabla }) => {
       <td className="text-center align-content-center">
         {habitacion.capacidad}
       </td>
-      <td className="text-center align-content-center">
+      <td className="text-center align-content-center d-none d-md-table-cell">
         <img
           src={habitacion.imagen}
-          className="w-25"
+          className="img-fluid"
+          style={{
+            maxWidth: "80px",
+            maxHeight: "60px",
+            objectFit: "cover",
+          }}
           alt={habitacion.tipo}
         ></img>
       </td>
       <td className="text-center align-content-center">
-        ${habitacion.precioPorNoche}
+        <small className="d-block d-sm-none">$</small>
+        <span className="d-none d-sm-inline">$</span>
+        {habitacion.precioPorNoche}
       </td>
       <td className="text-center align-content-center">
-        <Badge bg={habitacion.reserva ? "danger" : "success"}>
+        <Badge
+          bg={habitacion.reserva ? "danger" : "success"}
+          className="d-none d-sm-inline"
+        >
           {habitacion.reserva ? "Ocupada" : "Disponible"}
+        </Badge>
+        <Badge
+          bg={habitacion.reserva ? "danger" : "success"}
+          className="d-sm-none"
+        >
+          {habitacion.reserva ? "Ocupada" : "Libre"}
         </Badge>
       </td>
       <td className="text-center">
-        <Link
-          className="me-lg-2 btn btn-warning my-2"
-          to={`/administrador/editar/${habitacion.id}`}
-        >
-          <i className="bi bi-pencil-square"></i>
-        </Link>
-        <Button className="me-lg-2 btn btn-danger" onClick={borrarHabitacion}>
-          <i className="bi bi-trash"></i>
-        </Button>
+        <div className="d-flex flex-column flex-sm-row gap-1 justify-content-center">
+          <Link
+            className="btn btn-warning btn-sm"
+            to={`/administrador/editar/${habitacion.id}`}
+          >
+            <i className="bi bi-pencil-square"></i>
+            <span className="d-none d-lg-inline ms-1">Editar</span>
+          </Link>
+          <Button className="btn btn-danger btn-sm" onClick={borrarHabitacion}>
+            <i className="bi bi-trash"></i>
+            <span className="d-none d-lg-inline ms-1">Eliminar</span>
+          </Button>
+        </div>
       </td>
     </tr>
   );
